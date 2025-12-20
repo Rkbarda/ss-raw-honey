@@ -1,188 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&S Raw Honey | Himachal Ka Jadoo</title>
-    <style>
-        :root {
-            --honey-yellow: #FFC107;
-            --deep-green: #0b2b26;
-            --accent-gold: #f39c12;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: var(--deep-green);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* --- ANIMATED HEADER --- */
-        .header-brand {
-            background-color: var(--honey-yellow);
-            color: black;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .logo-text {
-            font-size: 4rem;
-            font-family: 'Georgia', serif;
-            margin: 0;
-            animation: jarBounce 2s infinite alternate;
-        }
-
-        @keyframes jarBounce {
-            from { transform: translateY(0) rotate(-2deg); }
-            to { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .honey-drip {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-image: radial-gradient(circle, var(--honey-yellow) 70%, transparent 71%);
-            background-size: 40px 80px;
-            background-position: 0 -40px;
-        }
-
-        /* --- BEE ANIMATION --- */
-        .bee {
-            position: absolute;
-            font-size: 2rem;
-            animation: fly 8s linear infinite;
-            z-index: 100;
-        }
-
-        @keyframes fly {
-            0% { left: -10%; top: 20%; transform: scaleX(1); }
-            45% { left: 110%; top: 40%; transform: scaleX(1); }
-            50% { left: 110%; top: 40%; transform: scaleX(-1); }
-            95% { left: -10%; top: 20%; transform: scaleX(-1); }
-            100% { left: -10%; top: 20%; transform: scaleX(1); }
-        }
-
-        /* --- PRODUCT GRID --- */
-        .container {
-            max-width: 1100px;
-            margin: 80px auto;
-            padding: 20px;
-        }
-
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .card {
-            background: white;
-            color: #333;
-            border-radius: 20px;
-            padding: 25px;
-            width: 280px;
-            text-align: center;
-            border: 4px solid var(--honey-yellow);
-            transition: 0.3s;
-        }
-
-        .card:hover { transform: scale(1.05); }
-
-        .card img {
-            width: 150px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .price-tag {
-            font-size: 1.4rem;
-            color: #b36200;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .buy-btn {
-            display: block;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        /* --- LABEL DETAILS SECTION --- */
-        .notice-box {
-            background: rgba(0,0,0,0.3);
-            border: 2px dashed var(--honey-yellow);
-            padding: 20px;
-            margin-top: 50px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 600px) {
-            .grid { flex-direction: column; align-items: center; }
-            .logo-text { font-size: 2.5rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S&S Raw Honey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --yellow:#f4b400;
+      --dark:#0f3d33;
+      --green:#1f7a4a;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:var(--dark);
+      color:#fff;
+    }
+    header{
+      background:var(--yellow) url('assets/hero-honey.png') center/contain no-repeat;
+      padding:60px 20px 120px;
+      text-align:center;
+      position:relative;
+    }
+    header h1{
+      font-size:48px;
+      margin:0;
+      color:#000;
+      letter-spacing:2px;
+    }
+    header h2{
+      margin:10px 0 0;
+      color:#fff;
+      font-weight:600;
+    }
+    .notice{
+      position:absolute;
+      right:20px;
+      top:20px;
+      background:#143d2b;
+      padding:10px 14px;
+      border-radius:6px;
+      font-size:12px;
+    }
+    section{
+      padding:40px 20px;
+      text-align:center;
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:24px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .card{
+      background:#fff;
+      color:#000;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+    }
+    .card img{
+      width:120px;
+      height:auto;
+      margin-bottom:10px;
+    }
+    .price{
+      color:var(--green);
+      font-weight:600;
+      margin:8px 0;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#25D366;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:30px;
+      text-decoration:none;
+      font-size:14px;
+    }
+    footer{
+      background:#0b2e26;
+      padding:30px 20px;
+      font-size:14px;
+    }
+    footer small{
+      display:block;
+      margin-top:10px;
+      opacity:.8;
+    }
+  </style>
 </head>
 <body>
 
-<div class="bee">🐝</div>
-
-<header class="header-brand">
-    <h1 class="logo-text">S&S</h1>
-    <h2 style="margin:0;">RAW HONEY</h2>
-    <p><i>शहद नहीं, हिमाचल का जादू।</i></p>
-    <div class="honey-drip"></div>
+<header>
+  <div class="notice">NOTICE:<br>Don't use wet spoon</div>
+  <h1>S & S</h1>
+  <h2>RAW HONEY</h2>
 </header>
 
-<div class="container">
-    <div class="grid">
-        <div class="card">
-            <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Jar">
-            <h3>Organic Forest Honey</h3>
-            <p>Pure Raw Honey from wild mountain flowers.</p>
-            <div class="price-tag">₹550</div>
-            <a href="https://wa.me/91XXXXXXXXXX?text=Hi S&S! I want to buy Organic Forest Honey" class="buy-btn">Order on WhatsApp</a>
-        </div>
-
-        <div class="card">
-            <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Jar">
-            <h3>Mountain Bloom</h3>
-            <p>100% Natural nectar from Himachal peaks.</p>
-            <div class="price-tag">₹580</div>
-            <a href="https://wa.me/91XXXXXXXXXX?text=Hi S&S! I want to buy Mountain Bloom Honey" class="buy-btn">Order on WhatsApp</a>
-        </div>
+<section>
+  <h2>About Us</h2>
+  <div class="products">
+    <div class="card">
+      <img src="assets/jar1.png" alt="Organic Forest Honey">
+      <h3>Organic Forest Honey</h3>
+      <div class="price">₹550</div>
+      <a class="btn" href="https://wa.me/917018305035">Order on WhatsApp</a>
     </div>
-
-    <div class="notice-box">
-        <h4 style="color: var(--honey-yellow); margin-top: 0;">⚠️ NOTICE</h4>
-        <p>DON'T USE WET SPOON. Keep in a cool, dry place.</p>
-        <p><small>FSSAI LIC NO: 20925004003617</small></p>
+    <div class="card">
+      <img src="assets/jar2.png" alt="Mountain Bloom">
+      <h3>Mountain Bloom – 500g</h3>
+      <div class="price">₹580</div>
+      <a class="btn" href="https://wa.me/917018305035">Order on WhatsApp</a>
     </div>
-</div>
+    <div class="card">
+      <img src="assets/jar3.png" alt="Wildflower Comb">
+      <h3>Wildflower Comb – 300g</h3>
+      <div class="price">₹620</div>
+      <a class="btn" href="https://wa.me/917018305035">Order on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>PURE HONEY, FROM HIVE TO HOME</h3>
+  <p>Crafted from wild flowers in Kangra using sustainable practices.</p>
+  <p><strong>शहद नहीं, हिमाचल का जादू</strong></p>
+</section>
 
 <footer>
-    <p><b>S&S PALAMPUR</b></p>
-    <p>Kangra, Himachal Pradesh 176064</p>
-    <p>SHAHAD NAHI, HIMACHAL KA JADOO.</p>
+  Contact: +91 12345 67890<br>
+  Email: info@ssrawhoney.com
+  <small>Location: Palampur, Kangra, Himachal Pradesh</small>
 </footer>
 
 </body>
