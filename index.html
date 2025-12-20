@@ -79,7 +79,6 @@ body{
     text-align:center;
 }
 
-/* HONEY LIQUID */
 .honey-liquid{
     position:absolute;
     inset:0;
@@ -88,41 +87,35 @@ body{
 
     -webkit-mask-image:url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="none">\
-<path d="M0,0H1200V210 \
-C1100,210 1080,260 1040,260 \
-C1000,260 980,210 920,210 \
-C860,210 840,260 800,260 \
-C760,260 740,210 680,210 \
-C620,210 600,260 560,260 \
-C520,260 500,210 440,210 \
-C380,210 360,260 320,260 \
-C280,260 260,210 200,210 \
-C140,210 120,260 80,260 \
-C40,260 20,210 0,210Z"/>\
+<path d="M0,0H1200V215 \
+C1120,215 1100,245 1060,245 \
+C1020,245 1000,215 940,215 \
+C880,215 860,245 820,245 \
+C780,245 760,215 700,215 \
+C640,215 620,245 580,245 \
+C540,245 520,215 460,215 \
+C400,215 380,245 340,245 \
+C300,245 280,215 220,215 \
+C160,215 140,245 100,245 \
+C60,245 40,215 0,215Z"/>\
 </svg>');
     -webkit-mask-size:100% 100%;
     animation:pour 1.5s cubic-bezier(.19,1,.22,1) forwards;
 }
 
-/* DEPTH SHADOW (SOFTER) */
+/* IMPROVED DEPTH */
 .honey-liquid::after{
     content:'';
     position:absolute;
-    bottom:-1px;
+    bottom:-2px;
     left:0;
     width:100%;
-    height:45px;
-    background:linear-gradient(
-        to bottom,
-        rgba(0,0,0,.28),
-        rgba(0,0,0,0)
-    );
-}
-
-/* POUR */
-@keyframes pour{
-    from{transform:scaleY(0);}
-    to{transform:scaleY(1);}
+    height:55px;
+    background:
+        radial-gradient(ellipse at center top,
+            rgba(0,0,0,.25),
+            rgba(0,0,0,0) 70%);
+    pointer-events:none;
 }
 
 /* BRANDING */
