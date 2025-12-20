@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&S Raw Honey | Pure Himalayan Gold</title>
+    <title>S&S Raw Honey</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,7 +14,6 @@
             --forest: #072a23;
         }
 
-        /* GLOBAL STYLES */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -23,154 +22,173 @@
             overflow-x: hidden;
         }
 
+        /* 1. REFINED PATTERN: Minimalist hex grid that matches the dark aesthetic */
         .pattern {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52"><path d="M15 0l15 8.66v17.34L15 34.66 0 26V8.66L15 0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
-            background-size: 30px 52px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52"><path d="M15 0l15 8.66v17.34L15 34.66 0 26V8.66L15 0z" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/></svg>');
+            background-size: 32px 54px;
         }
 
-        /* HERO SECTION */
+        /* 2. MATCHED HEADER: Deep organic drips */
         .hero {
             position: relative;
-            height: 650px;
+            height: 600px;
             overflow: hidden;
             background-color: var(--forest);
         }
 
+        .honey-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #ffcc33 0%, var(--honey) 70%, var(--honey-dark) 100%);
+            z-index: 5;
+            
+            /* The Mask now matches the "Himachal Ka" branding style better */
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,0 H1200 V300 C1100,300 1050,480 950,480 C850,480 800,300 700,300 C600,300 550,480 450,480 C350,480 300,300 200,300 C100,300 50,480 0,480 Z" fill="black"/></svg>');
+            -webkit-mask-size: 100% 100%;
+            animation: honeySway 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes honeySway {
+            from { transform: scaleY(1); }
+            to { transform: scaleY(1.03); }
+        }
+
+        /* 3. ALIGNED BRANDING: Positioning text to match the drip weight */
+        .brand {
+            position: absolute;
+            top: 40%; /* Moved slightly up to clear the drip curves */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .brand p { 
+            color: #000; 
+            letter-spacing: 6px; 
+            font-weight: 700; 
+            margin: 0; 
+            font-size: 11px; 
+            opacity: 0.9;
+        }
+
+        .brand h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 110px; 
+            margin: -5px 0; 
+            color: #000; 
+            line-height: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .brand h2 { 
+            letter-spacing: 10px; 
+            font-size: 0.85rem; 
+            color: #000; 
+            margin-top: 10px; 
+            font-weight: 400; 
+            text-transform: uppercase;
+        }
+
+        /* FALLING DROPS: Matches the drip color exactly */
+        .drop {
+            position: absolute;
+            background: var(--honey-dark);
+            width: 14px;
+            height: 14px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            z-index: 4;
+            animation: fallDown 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fallDown {
+            0% { top: 350px; opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { top: 850px; opacity: 0; }
+        }
+
+        /* Notice Box styling */
         .notice {
             position: absolute;
             top: 25px;
             right: 30px;
             background: #000;
-            color: var(--honey);
-            padding: 8px 12px;
+            color: #fff;
+            padding: 10px 15px;
             font-size: 10px;
             font-weight: 700;
-            border-radius: 4px;
-            z-index: 100;
+            border-radius: 3px;
+            z-index: 50;
             border: 1px solid var(--honey);
         }
 
-        /* ANIMATED HONEY HEADER */
-        .honey-header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 450px;
-            background: linear-gradient(180deg, #ffcc33, #f4b400);
-            z-index: 5;
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="none"><path d="M0,0 H1200 V250 C1100,250 1050,380 950,380 C850,380 800,250 700,250 C600,250 550,380 450,380 C350,380 300,250 200,250 C100,250 50,380 0,380 Z" fill="black"/></svg>');
-            -webkit-mask-size: 100% 100%;
-        }
-
-        /* FALLING DROPS */
-        .drop {
-            position: absolute;
-            background: var(--honey-dark);
-            width: 12px;
-            height: 12px;
-            border-radius: 0 50% 50% 50%;
-            transform: rotate(45deg);
-            z-index: 4;
-            animation: fall 4s linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes fall {
-            0% { top: 300px; opacity: 1; transform: rotate(45deg) scale(1); }
-            70% { opacity: 1; }
-            100% { top: 800px; opacity: 0; transform: rotate(45deg) scale(0.5); }
-        }
-
-        /* Randomizing drop positions */
-        .drop:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .drop:nth-child(2) { left: 30%; animation-delay: 1.5s; width: 8px; height: 8px; }
-        .drop:nth-child(3) { left: 50%; animation-delay: 0.8s; }
-        .drop:nth-child(4) { left: 75%; animation-delay: 2.2s; width: 15px; height: 15px; }
-        .drop:nth-child(5) { left: 90%; animation-delay: 1.2s; }
-
-        /* ANIMATED BEES */
-        .bee {
-            position: absolute;
-            font-size: 20px;
-            z-index: 10;
-            pointer-events: none;
-            animation: fly 10s linear infinite;
-        }
-
-        @keyframes fly {
-            0% { transform: translate(-100px, 100px) rotate(0deg); }
-            25% { transform: translate(300px, 50px) rotate(10deg); }
-            50% { transform: translate(600px, 150px) rotate(-10deg); }
-            75% { transform: translate(900px, 80px) rotate(5deg); }
-            100% { transform: translate(1300px, 120px) rotate(0deg); }
-        }
-
-        /* ANIMATED HONEY DIPPER (Spoon) */
+        /* Honey Dipper Positioning */
         .dipper {
             position: absolute;
             top: -20px;
             right: 15%;
-            z-index: 20;
+            z-index: 15;
             transform-origin: top center;
-            animation: sway 3s ease-in-out infinite alternate;
+            animation: swayDipper 4s ease-in-out infinite alternate;
         }
 
-        @keyframes sway {
-            from { transform: rotate(-5deg); }
-            to { transform: rotate(5deg); }
+        @keyframes swayDipper {
+            from { transform: rotate(-4deg); }
+            to { transform: rotate(4deg); }
         }
 
-        .dipper-stick { width: 10px; height: 250px; background: #7d4e24; border-radius: 5px; margin: 0 auto; }
+        .dipper-stick { width: 8px; height: 220px; background: #6b3e1a; margin: 0 auto; border-radius: 4px; }
         .dipper-head { 
-            width: 50px; height: 60px; 
-            background: repeating-linear-gradient(0deg, #a67038, #a67038 8px, #7d4e24 8px, #7d4e24 12px);
-            border-radius: 10px; margin-top: -10px;
+            width: 44px; height: 50px; 
+            background: repeating-linear-gradient(0deg, #96612d, #96612d 8px, #6b3e1a 8px, #6b3e1a 12px);
+            border-radius: 8px; margin-top: -8px;
         }
 
-        /* BRAND TEXT */
-        .brand {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        /* Section Spacing */
+        .products { padding: 100px 20px; text-align: center; }
+        .grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card { background: #fff; border-radius: 30px; padding: 50px 30px; color: #333; transition: 0.4s; }
+        .card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+
+        /* Dimmed Footer */
+        footer {
+            padding: 80px 20px;
+            background: rgba(0,0,0,0.5);
             text-align: center;
-            z-index: 10;
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .brand h1 { font-family: 'Playfair Display', serif; font-size: 100px; margin: 0; color: #000; }
-        .brand p { color: #000; letter-spacing: 5px; font-weight: 700; }
 
-        /* CONTENT SECTIONS */
-        .section { padding: 80px 20px; text-align: center; max-width: 1100px; margin: auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        
-        .card { background: #fff; color: #333; padding: 40px; border-radius: 20px; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); }
-        
-        .price { font-size: 24px; font-weight: 700; color: #1f7a4a; margin: 15px 0; }
-        .btn { background: #25D366; color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
-
-        /* INFO SECTION */
-        .info-box { background: rgba(244, 180, 0, 0.1); border: 1px solid var(--honey); padding: 40px; border-radius: 20px; margin-top: 40px; }
-        .info-box h2 { color: var(--honey); }
-
-        footer { background: rgba(0,0,0,0.5); padding: 60px 20px; text-align: center; color: rgba(255,255,255,0.6); }
+        @media(max-width: 768px) {
+            .brand h1 { font-size: 70px; }
+            .brand h2 { font-size: 0.7rem; letter-spacing: 5px; }
+        }
     </style>
 </head>
 <body class="pattern">
 
     <section class="hero">
-        <div class="notice">⚠️ DRY SPOON ONLY<br>NO MOISTURE</div>
+        <div class="notice">WARNING: DRY SPOON ONLY<br>PROTECT THE PURITY</div>
         
         <div class="honey-header"></div>
         
-        <div class="drop"></div>
-        <div class="drop"></div>
-        <div class="drop"></div>
-        <div class="drop"></div>
-        <div class="drop"></div>
-
-        <div class="bee">🐝</div>
-        <div class="bee" style="animation-delay: 2s;">🐝</div>
+        <div class="drop" style="left: 20%; animation-delay: 0s;"></div>
+        <div class="drop" style="left: 45%; animation-delay: 2.5s;"></div>
+        <div class="drop" style="left: 75%; animation-delay: 1s;"></div>
 
         <div class="dipper">
             <div class="dipper-stick"></div>
@@ -178,60 +196,29 @@
         </div>
 
         <div class="brand">
-            <p>HIMACHAL'S FINEST</p>
+            <p>HIMACHAL KA</p>
             <h1>S&S</h1>
-            <p>AUTHENTIC RAW HONEY</p>
+            <h2>Authentic Raw Honey</h2>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Our Collection</h2>
+    <section class="products">
         <div class="grid">
             <div class="card">
-                <h3>Forest Honey</h3>
-                <p>Wild, dark, and rich in minerals.</p>
-                <div class="price">₹550</div>
-                <a href="#" class="btn">Order Now</a>
+                <div style="width:100px; height:120px; background:var(--honey); border-radius:10px 10px 30px 30px; margin:0 auto 20px; border:4px solid var(--honey-dark);"></div>
+                <h3>Wildflower Honey</h3>
+                <p style="font-size:14px; opacity:0.7;">Directly from the high-altitude meadows.</p>
+                <div style="font-size:24px; font-weight:700; color:#1f7a4a; margin:15px 0;">₹550</div>
+                <a href="#" style="background:#25D366; color:#fff; padding:12px 30px; border-radius:50px; text-decoration:none; font-weight:600; display:inline-block;">Order on WhatsApp</a>
             </div>
-            <div class="card">
-                <h3>Acacia Bloom</h3>
-                <p>Light, floral, and perfect for tea.</p>
-                <div class="price">₹580</div>
-                <a href="#" class="btn">Order Now</a>
+            
             </div>
-            <div class="card">
-                <h3>Sidr Gold</h3>
-                <p>The rarest honey with medicinal properties.</p>
-                <div class="price">₹950</div>
-                <a href="#" class="btn">Order Now</a>
-            </div>
-        </div>
     </section>
 
-    <section class="section">
-        <div class="info-box">
-            <h2>Why Choose S&S Raw Honey?</h2>
-            <div class="grid">
-                <div>
-                    <h4>🚫 No Heating</h4>
-                    <p>Processed honey is heated, killing enzymes. Ours is kept raw.</p>
-                </div>
-                <div>
-                    <h4>🍯 Unfiltered</h4>
-                    <p>We keep the natural pollen and propolis inside the jar.</p>
-                </div>
-                <div>
-                    <h4>🏔️ Himalayan Sourced</h4>
-                    <p>Collected from pollution-free zones in the high mountains.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer class="pattern">
         <p><strong>S&S RAW HONEY CO.</strong></p>
-        <p>Pure · Unheated · Unfiltered · Natural</p>
-        <p style="font-size: 12px; margin-top: 20px;">© 2025 Authentic Raw Honey. All Rights Reserved.</p>
+        <p>Pure · Natural · Unfiltered · Ethically Sourced</p>
+        <p style="margin-top:20px;">© 2025 All Rights Reserved.</p>
     </footer>
 
 </body>
