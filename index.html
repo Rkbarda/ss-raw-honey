@@ -9,148 +9,206 @@
 
 <style>
 :root{
-  --honey:#f4b400;
-  --forest:#072a23;
+    --honey-main:#f4b400;
+    --honey-deep:#d49a00;
+    --forest:#072a23;
 }
 
-*{box-sizing:border-box;}
-body{margin:0;font-family:Poppins,sans-serif;overflow-x:hidden;}
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
-  position:relative;
-  background:var(--honey);
-  padding-bottom:0;
+    position:relative;
+    min-height:520px;
+    background-color:var(--forest);
+    background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0yOCA2NkwwIDUwVjE4TDI4IDJMNTYgMThWNTBMMjggNjZ6IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjQ0LDE4MCwwLDAuMDYpIi8+PC9zdmc+');
 }
 
 /* NOTICE */
 .notice{
-  position:absolute;
-  top:25px;
-  right:30px;
-  background:#000;
-  color:#fff;
-  font-size:10px;
-  padding:10px 14px;
-  border-radius:4px;
-  font-weight:700;
-  z-index:20;
+    position:absolute;
+    top:25px;
+    right:30px;
+    background:#000;
+    padding:10px 15px;
+    font-size:10px;
+    font-weight:700;
+    border-radius:4px;
+    z-index:120;
 }
 
 /* JAR */
 .hero-jar{
-  position:absolute;
-  left:6%;
-  top:80px;
-  width:260px;
-  transform:rotate(-12deg);
-  z-index:15;
-  filter:drop-shadow(0 18px 30px rgba(0,0,0,.4));
+    position:absolute;
+    left:8%;
+    top:60px;
+    width:260px;
+    z-index:90;
+    transform:rotate(-12deg);
+    filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));
 }
 
 /* SPOON */
-.spoon{
-  position:absolute;
-  top:30px;
-  right:12%;
-  width:260px;
-  z-index:15;
+.spoon-container{
+    position:absolute;
+    top:0;
+    right:10%;
+    width:300px;
+    z-index:110;
+    animation:spoonDrip 3s ease-in-out infinite alternate;
 }
 
-/* BRAND */
-.brand{
-  text-align:center;
-  padding:140px 20px 120px;
+@keyframes spoonDrip{
+    0%{transform:translateY(0) rotate(0deg);}
+    100%{transform:translateY(15px) rotate(2deg);}
 }
 
-.brand p{
-  letter-spacing:5px;
-  font-weight:700;
+/* HONEY BANNER */
+.honey-banner{
+    position:relative;
+    width:100%;
+    height:480px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.brand h1{
-  font-family:'Playfair Display',serif;
-  font-size:96px;
-  margin:10px 0;
-}
+/* HONEY LIQUID */
+.honey-liquid{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,var(--honey-main),var(--honey-deep));
+    z-index:1;
 
-.brand h2{
-  letter-spacing:14px;
-  font-size:18px;
-}
-
-/* ================= DRIP ================= */
-.drip{
-  position:relative;
-  height:160px;
-  background:var(--forest);
-}
-
-.drip::before{
-  content:'';
-  position:absolute;
-  top:-160px;
-  left:0;
-  width:100%;
-  height:160px;
-  background:var(--honey);
-
-  -webkit-mask-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" preserveAspectRatio="none">\
-<path d="M0,0 H1200 V80 \
-C1100,80 1100,140 1000,140 \
-C900,140 900,80 800,80 \
-C700,80 700,140 600,140 \
-C500,140 500,80 400,80 \
-C300,80 300,140 200,140 \
-C100,140 100,80 0,80 Z"/>\
+    -webkit-mask-image:url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="none">\
+<path d="M0,0H1200V210 \
+C1100,210 1080,260 1040,260 \
+C1000,260 980,210 920,210 \
+C860,210 840,260 800,260 \
+C760,260 740,210 680,210 \
+C620,210 600,260 560,260 \
+C520,260 500,210 440,210 \
+C380,210 360,260 320,260 \
+C280,260 260,210 200,210 \
+C140,210 120,260 80,260 \
+C40,260 20,210 0,210Z"/>\
 </svg>');
-  -webkit-mask-size:100% 100%;
+    -webkit-mask-size:100% 100%;
+    animation:pour 1.5s cubic-bezier(.19,1,.22,1) forwards;
 }
 
-/* ================= GREEN SECTION ================= */
-.green{
-  height:260px;
-  background:
-    linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)),
-    url('data:image/svg+xml;utf8,\
+/* DEPTH SHADOW (SOFTER) */
+.honey-liquid::after{
+    content:'';
+    position:absolute;
+    bottom:-1px;
+    left:0;
+    width:100%;
+    height:45px;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.28),
+        rgba(0,0,0,0)
+    );
+}
+
+/* POUR */
+@keyframes pour{
+    from{transform:scaleY(0);}
+    to{transform:scaleY(1);}
+}
+
+/* BRANDING */
+.branding{
+    position:relative;
+    z-index:2;
+}
+
+.branding p{
+    color:#000;
+    font-weight:800;
+    letter-spacing:5px;
+    margin-bottom:10px;
+}
+
+.branding h1{
+    font-family:'Playfair Display',serif;
+    font-size:100px;
+    color:#000;
+    margin:0;
+    line-height:.8;
+}
+
+.branding h2{
+    letter-spacing:15px;
+    text-transform:uppercase;
+    font-size:1.2rem;
+    color:#fff;
+    margin-top:10px;
+}
+
+/* GREEN SECTION UNDER DRIP */
+.green-section{
+    height:260px;
+    background-color:var(--forest);
+    background-image:url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="32">\
 <path d="M28 0L56 16L28 32L0 16Z" fill="none" stroke="rgba(244,180,0,.08)"/>\
 </svg>');
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media(max-width:768px){
-  .hero-jar{width:180px;top:100px;}
-  .spoon{width:180px;top:50px;}
-  .brand h1{font-size:64px;}
-  .brand h2{letter-spacing:8px;}
-  .drip{height:120px;}
-  .drip::before{top:-120px;height:120px;}
+    .hero{min-height:620px;}
+    .honey-banner{height:520px;}
+    .hero-jar{width:180px;top:90px;}
+    .spoon-container{width:220px;}
+    .branding h1{font-size:64px;}
+    .branding h2{letter-spacing:8px;}
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<div class="hero">
 
-  <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
+    <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
 
-  <img src="assets/Jar1.png" class="hero-jar" alt="Honey Jar">
+    <img src="assets/Jar1.png" class="hero-jar" alt="Honey Jar">
 
-  <img src="assets/spoon.png" class="spoon" alt="Spoon">
+    <div class="spoon-container">
+        <!-- SAME SVG YOU PROVIDED -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="150" y="20" width="10" height="100" rx="5" fill="#8d6e63" transform="rotate(-45 150 20)"/>
+            <ellipse cx="80" cy="110" rx="35" ry="25" fill="#bcaaa4" transform="rotate(-15 80 110)"/>
+            <path d="M50,105 Q80,75 115,105 Q120,140 80,150 Q40,140 50,105" fill="#f4b400"/>
+            <path d="M75,145 Q80,185 85,145" fill="#f4b400">
+                <animate attributeName="d" dur="2s" repeatCount="indefinite"
+                values="M75,145 Q80,165 85,145;M75,145 Q80,200 85,145;M75,145 Q80,165 85,145"/>
+            </path>
+        </svg>
+    </div>
 
-  <div class="brand">
-    <p>PREMIUM RAW HONEY</p>
-    <h1>S&amp;S</h1>
-    <h2>RAW HONEY</h2>
-  </div>
+    <div class="honey-banner">
+        <div class="honey-liquid"></div>
+        <div class="branding">
+            <p>PREMIUM RAW HONEY</p>
+            <h1>S&S</h1>
+            <h2>RAW HONEY</h2>
+        </div>
+    </div>
 
-</section>
+</div>
 
-<div class="drip"></div>
-<div class="green"></div>
+<div class="green-section"></div>
 
 </body>
 </html>
