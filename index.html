@@ -19,9 +19,9 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-forest);
-            /* This creates the subtle honeycomb background directly in CSS */
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
-            background-size: 80px;
+            /* Live Honeycomb Pattern */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
+            background-size: 60px;
             color: var(--text-white);
             overflow-x: hidden;
         }
@@ -29,50 +29,45 @@
         /* ===== HERO SECTION ===== */
         .hero {
             position: relative;
-            background: var(--honey-yellow) url('assets/hero.png') center/cover no-repeat;
+            background: var(--honey-yellow);
             height: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1;
         }
 
-        /* The custom drip curve */
+        /* The Drip Effect */
         .hero::after {
             content: "";
             position: absolute;
-            bottom: -50px;
+            bottom: -80px;
             left: 0;
             width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f4b400" d="M0,192L48,176C96,160,192,128,288,144C384,160,480,224,576,218.7C672,213,768,139,864,128C960,117,1056,171,1152,192C1248,213,1344,203,1392,197.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') top center/cover no-repeat;
+            height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f4b400" d="M0,160L40,181.3C80,203,160,245,240,229.3C320,213,400,139,480,128C560,117,640,171,720,197.3C800,224,880,224,960,197.3C1040,171,1120,117,1200,96C1280,75,1360,85,1400,90.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>') top center/cover no-repeat;
         }
 
         .notice-tag {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            padding: 10px 15px;
-            border-radius: 5px;
+            top: 30px;
+            right: 30px;
+            background: #123b2a;
+            padding: 12px;
+            border-radius: 8px;
             font-size: 11px;
-            border-left: 3px solid var(--honey-yellow);
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         /* ===== PRODUCTS ===== */
         .container {
             max-width: 1100px;
-            margin: 100px auto 50px;
+            margin: 120px auto 60px;
             padding: 0 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 32px;
-            font-weight: 600;
         }
 
         .product-grid {
@@ -84,123 +79,155 @@
         .card {
             background: white;
             color: #333;
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .card:hover { transform: translateY(-10px); }
 
         .card img {
-            width: 140px;
+            width: 160px;
+            height: 180px;
+            object-fit: contain;
             margin-bottom: 20px;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
         }
 
-        .card h3 { font-size: 20px; margin: 10px 0; }
-        
         .price-tag {
             color: #1f7a4a;
             font-weight: 700;
-            font-size: 22px;
-            margin: 10px 0 25px;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .btn-order {
             background: var(--whatsapp-green);
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 14px 30px;
             border-radius: 50px;
             font-weight: 600;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .btn-order:hover { background: #1eb956; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
-
-        /* ===== TAGLINE ===== */
-        .branding-footer {
-            text-align: center;
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            background: rgba(244, 180, 0, 0.05);
             padding: 80px 20px;
+            text-align: center;
         }
 
+        .benefits-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            width: 200px;
+        }
+
+        .benefit-item img { width: 50px; margin-bottom: 15px; filter: invert(78%) sepia(54%) saturate(1550%) hue-rotate(359deg) brightness(102%) contrast(105%); }
+
+        /* ===== BRANDING & FOOTER ===== */
         .hindi-magic {
-            font-size: 36px;
+            font-size: 42px;
             color: var(--honey-yellow);
             margin: 20px 0;
             font-weight: 700;
         }
 
-        /* ===== FOOTER ===== */
         footer {
-            background: rgba(0,0,0,0.4);
-            padding: 50px 20px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background: #08211b;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 40px 40px 0 0;
         }
-
-        .footer-col { margin: 10px; min-width: 200px; }
     </style>
 </head>
 <body>
 
     <div class="hero">
         <div class="notice-tag">NOTICE:<br>DON'T USE WET SPOON.</div>
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 80px; margin: 0;">S&S</h1>
-        <h2 style="letter-spacing: 10px; font-weight: 400; margin: 0;">RAW HONEY</h2>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 80px; margin: 0; color: #000;">S&S</h1>
+        <h2 style="letter-spacing: 10px; font-weight: 700; margin: 0; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">RAW HONEY</h2>
     </div>
 
     <div class="container">
-        <div class="section-header">About Us</div>
+        <h2 style="text-align: center; margin-bottom: 50px; text-transform: uppercase;">About Our Honey</h2>
         
         <div class="product-grid">
             <div class="card">
-                <img src="assets/jar.png" alt="Organic Forest Honey">
+                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 1">
                 <h3>Organic Forest Honey</h3>
                 <div class="price-tag">₹550</div>
-                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
-                <img src="assets/jar.png" alt="Mountain Bloom">
+                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 2">
                 <h3>Mountain Bloom - 500g</h3>
                 <div class="price-tag">₹580</div>
-                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
-                <img src="assets/jar.png" alt="Wildflower Comb">
+                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 3">
                 <h3>Wildflower Comb - 300g</h3>
                 <div class="price-tag">₹620</div>
-                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <div class="branding-footer">
-        <p style="letter-spacing: 2px;">PURE HONEY, FROM HIVE TO HOME.</p>
-        <p style="opacity: 0.8;">Crafted from wildflowers in Kangra sustainable practices.</p>
+    <section class="benefits-section">
+        <h2>Why Choose S&S Raw Honey?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913520.png" alt="Pure">
+                <h4>100% Pure</h4>
+                <p>No added sugar or preservatives. Just as nature intended.</p>
+            </div>
+            <div class="benefit-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/4336/4336881.png" alt="Sustainable">
+                <h4>Sustainable</h4>
+                <p>Ethically sourced from the wild forests of Kangra.</p>
+            </div>
+            <div class="benefit-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/2596/2596850.png" alt="Healthy">
+                <h4>Rich in Nutrients</h4>
+                <p>Packed with natural enzymes, vitamins, and antioxidants.</p>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 100px 20px;">
+        <p style="letter-spacing: 3px; font-weight: 600;">PURE HONEY, FROM HIVE TO HOME.</p>
         <div class="hindi-magic">शहद नहीं, हिमाचल का जादू।</div>
         <p style="font-style: italic; opacity: 0.6;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
     </div>
 
     <footer>
-        <div class="footer-col">
-            <strong>CONTACT</strong><br>
-            +91 12345 67890<br>
-            info@srawhoney.com
+        <div>
+            <h3 style="color: var(--honey-yellow);">CONTACT</h3>
+            <p>+91 12345 67890<br>info@srawhoney.com</p>
         </div>
-        <div class="footer-col">
-            <strong>LOCATION</strong><br>
-            SS, Palampur, Kangra<br>
-            Himachal Pradesh 176064
+        <div>
+            <h3 style="color: var(--honey-yellow);">LOCATION</h3>
+            <p>SS, Palampur, Kangra<br>Himachal Pradesh 176064</p>
         </div>
-        <div class="footer-col">
-            <strong>FOLLOW US</strong><br>
-            Instagram | Facebook | Twitter
+        <div>
+            <h3 style="color: var(--honey-yellow);">FOLLOW</h3>
+            <p>Instagram<br>Facebook<br>Twitter</p>
         </div>
     </footer>
 
