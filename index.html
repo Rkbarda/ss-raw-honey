@@ -19,9 +19,9 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-forest);
-            /* Live Honeycomb Pattern */
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
-            background-size: 60px;
+            /* Subtle Honeycomb Pattern */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNSKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
+            background-size: 80px;
             color: var(--text-white);
             overflow-x: hidden;
         }
@@ -29,44 +29,31 @@
         /* ===== HERO SECTION ===== */
         .hero {
             position: relative;
-            background: var(--honey-yellow);
-            height: 400px;
+            /* Linking to your Hero.png */
+            background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
+            height: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            z-index: 1;
-        }
-
-        /* The Drip Effect */
-        .hero::after {
-            content: "";
-            position: absolute;
-            bottom: -80px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f4b400" d="M0,160L40,181.3C80,203,160,245,240,229.3C320,213,400,139,480,128C560,117,640,171,720,197.3C800,224,880,224,960,197.3C1040,171,1120,117,1200,96C1280,75,1360,85,1400,90.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>') top center/cover no-repeat;
         }
 
         .notice-tag {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            background: #123b2a;
-            padding: 12px;
-            border-radius: 8px;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 15px;
+            border-radius: 5px;
             font-size: 11px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-left: 3px solid var(--honey-yellow);
         }
 
         /* ===== PRODUCTS ===== */
         .container {
             max-width: 1100px;
-            margin: 120px auto 60px;
+            margin: 80px auto;
             padding: 0 20px;
         }
 
@@ -79,78 +66,61 @@
         .card {
             background: white;
             color: #333;
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
-        .card:hover { transform: translateY(-10px); }
-
         .card img {
-            width: 160px;
+            width: 150px;
             height: 180px;
             object-fit: contain;
             margin-bottom: 20px;
         }
 
-        .price-tag {
-            color: #1f7a4a;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+        .price-tag { color: #1f7a4a; font-weight: 700; font-size: 24px; margin-bottom: 20px; }
 
         .btn-order {
             background: var(--whatsapp-green);
             color: white;
             text-decoration: none;
-            padding: 14px 30px;
+            padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
         }
 
         /* ===== BENEFITS SECTION ===== */
-        .benefits-section {
-            background: rgba(244, 180, 0, 0.05);
-            padding: 80px 20px;
+        .benefits {
+            background: rgba(255,255,255,0.03);
+            padding: 60px 20px;
             text-align: center;
+            margin-bottom: 50px;
         }
 
-        .benefits-grid {
+        .benefit-grid {
             display: flex;
             justify-content: center;
+            gap: 50px;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
-        .benefit-item {
-            width: 200px;
-        }
-
-        .benefit-item img { width: 50px; margin-bottom: 15px; filter: invert(78%) sepia(54%) saturate(1550%) hue-rotate(359deg) brightness(102%) contrast(105%); }
-
-        /* ===== BRANDING & FOOTER ===== */
+        /* ===== BRANDING ===== */
         .hindi-magic {
-            font-size: 42px;
+            font-size: 38px;
             color: var(--honey-yellow);
             margin: 20px 0;
             font-weight: 700;
         }
 
         footer {
-            background: #08211b;
-            padding: 60px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
-            border-radius: 40px 40px 0 0;
+            background: rgba(0,0,0,0.4);
+            padding: 50px 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -159,29 +129,28 @@
     <div class="hero">
         <div class="notice-tag">NOTICE:<br>DON'T USE WET SPOON.</div>
         <h1 style="font-family: 'Playfair Display', serif; font-size: 80px; margin: 0; color: #000;">S&S</h1>
-        <h2 style="letter-spacing: 10px; font-weight: 700; margin: 0; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">RAW HONEY</h2>
+        <h2 style="letter-spacing: 10px; font-weight: 400; margin: 0; color: #fff;">RAW HONEY</h2>
     </div>
 
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 50px; text-transform: uppercase;">About Our Honey</h2>
-        
+        <h2 style="text-align: center; margin-bottom: 40px;">OUR PRODUCTS</h2>
         <div class="product-grid">
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 1">
+                <img src="assets/Jar1.png" alt="Organic Forest Honey">
                 <h3>Organic Forest Honey</h3>
                 <div class="price-tag">₹550</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 2">
+                <img src="assets/Jar2.png" alt="Mountain Bloom">
                 <h3>Mountain Bloom - 500g</h3>
                 <div class="price-tag">₹580</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2321/2321312.png" alt="Jar 3">
+                <img src="assets/Jar3.png" alt="Wildflower Comb">
                 <h3>Wildflower Comb - 300g</h3>
                 <div class="price-tag">₹620</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
@@ -189,45 +158,40 @@
         </div>
     </div>
 
-    <section class="benefits-section">
-        <h2>Why Choose S&S Raw Honey?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913520.png" alt="Pure">
-                <h4>100% Pure</h4>
-                <p>No added sugar or preservatives. Just as nature intended.</p>
+    <section class="benefits">
+        <h2>Why S&S Raw Honey?</h2>
+        <div class="benefit-grid">
+            <div>
+                <h3 style="color: var(--honey-yellow);">100% Raw</h3>
+                <p>Unfiltered & Unheated</p>
             </div>
-            <div class="benefit-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/4336/4336881.png" alt="Sustainable">
-                <h4>Sustainable</h4>
-                <p>Ethically sourced from the wild forests of Kangra.</p>
+            <div>
+                <h3 style="color: var(--honey-yellow);">Wild Sourced</h3>
+                <p>From Kangra Valley</p>
             </div>
-            <div class="benefit-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/2596/2596850.png" alt="Healthy">
-                <h4>Rich in Nutrients</h4>
-                <p>Packed with natural enzymes, vitamins, and antioxidants.</p>
+            <div>
+                <h3 style="color: var(--honey-yellow);">Healthy</h3>
+                <p>Natural Antioxidants</p>
             </div>
         </div>
     </section>
 
-    <div style="text-align: center; padding: 100px 20px;">
-        <p style="letter-spacing: 3px; font-weight: 600;">PURE HONEY, FROM HIVE TO HOME.</p>
+    <div style="text-align: center; padding-bottom: 80px;">
+        <p style="letter-spacing: 2px;">PURE HONEY, FROM HIVE TO HOME.</p>
         <div class="hindi-magic">शहद नहीं, हिमाचल का जादू।</div>
-        <p style="font-style: italic; opacity: 0.6;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
+        <p style="opacity: 0.6;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
     </div>
 
     <footer>
         <div>
-            <h3 style="color: var(--honey-yellow);">CONTACT</h3>
-            <p>+91 12345 67890<br>info@srawhoney.com</p>
+            <strong>CONTACT</strong><br>
+            +91 12345 67890<br>
+            info@srawhoney.com
         </div>
         <div>
-            <h3 style="color: var(--honey-yellow);">LOCATION</h3>
-            <p>SS, Palampur, Kangra<br>Himachal Pradesh 176064</p>
-        </div>
-        <div>
-            <h3 style="color: var(--honey-yellow);">FOLLOW</h3>
-            <p>Instagram<br>Facebook<br>Twitter</p>
+            <strong>LOCATION</strong><br>
+            SS, Palampur, Kangra<br>
+            Himachal Pradesh 176064
         </div>
     </footer>
 
