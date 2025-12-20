@@ -8,103 +8,121 @@
     <style>
         :root {
             --honey-yellow: #f4b400;
-            --dark-forest: #0f3028;
+            --dark-forest: #072a23; /* Deepened for better title contrast */
             --whatsapp-green: #25D366;
             --text-white: #ffffff;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-forest);
             /* Subtle Honeycomb Pattern */
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNSKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
             background-size: 80px;
             color: var(--text-white);
-            overflow-x: hidden;
         }
 
-/* Update your Hero CSS to this */
-.hero {
-    position: relative;
-    /* Linking to your assets folder - Ensure names match exactly */
-    background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
-    height: 480px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    
-    /* THE CSS DRIP EFFECT */
-    /* This creates the wavy bottom edge using a CSS mask */
-    --mask: radial-gradient(45.12px at 50% 61.50px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
-            radial-gradient(45.12px at 50% -31.5px,#0000 99%,#000 101%) 50% 30px/120px 100% repeat-x;
-    -webkit-mask: var(--mask);
-    mask: var(--mask);
-}
+        /* ===== HERO SECTION WITH DRIP ===== */
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            /* This ensures the title below doesn't get cut off */
+            padding-bottom: 80px; 
+        }
 
-/* Added a shadow effect behind the drip to make it pop */
-.hero-container {
-    filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.3));
-    margin-bottom: 50px;
-}
+        .hero-bg {
+            background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
+            height: 320px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* The CSS Drip Mask */
+            mask-image: radial-gradient(40px at 50% 100%, #000 98%, #0000), 
+                        linear-gradient(#000 0 0);
+            mask-size: 80px 100%, 100% calc(100% - 40px);
+            mask-repeat: repeat-x, no-repeat;
+            mask-position: bottom;
+            -webkit-mask-image: radial-gradient(40px at 50% 100%, #000 98%, #0000), 
+                                linear-gradient(#000 0 0);
+            -webkit-mask-size: 80px 100%, 100% calc(100% - 40px);
+            -webkit-mask-repeat: repeat-x, no-repeat;
+            -webkit-mask-position: bottom;
+            z-index: 1;
+        }
 
-.notice-tag {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    background: #123b2a;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: bold;
-    color: white;
-    z-index: 10;
-}
+        /* Branding Text - Centered over the drip transition */
+        .branding {
+            position: absolute;
+            top: 280px; /* Positioned to sit right on the dark green */
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .branding h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            color: #000;
+            line-height: 1;
+        }
+
+        .branding h2 {
+            font-size: 18px;
+            letter-spacing: 8px;
+            color: var(--text-white);
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
         .notice-tag {
             position: absolute;
             top: 20px;
             right: 20px;
             background: rgba(0,0,0,0.8);
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 11px;
-            border-left: 3px solid var(--honey-yellow);
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: bold;
         }
 
         /* ===== PRODUCTS ===== */
         .container {
-            max-width: 1100px;
-            margin: 80px auto;
+            max-width: 1200px;
+            margin: 120px auto 60px;
             padding: 0 20px;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .card {
             background: white;
-            color: #333;
             border-radius: 20px;
             padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
         }
 
+        .card:hover { transform: translateY(-10px); }
+
         .card img {
-            width: 150px;
-            height: 180px;
-            object-fit: contain;
+            width: 100%;
+            max-width: 180px;
+            height: auto;
             margin-bottom: 20px;
         }
 
-        .price-tag { color: #1f7a4a; font-weight: 700; font-size: 24px; margin-bottom: 20px; }
+        .card h3 { color: #333; margin-bottom: 10px; }
+        .price { color: #1f7a4a; font-weight: 700; font-size: 22px; margin-bottom: 25px; }
 
         .btn-order {
             background: var(--whatsapp-green);
@@ -113,112 +131,57 @@
             padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
+            display: inline-block;
         }
 
-        /* ===== BENEFITS SECTION ===== */
-        .benefits {
-            background: rgba(255,255,255,0.03);
-            padding: 60px 20px;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .benefit-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        /* ===== BRANDING ===== */
-        .hindi-magic {
-            font-size: 38px;
-            color: var(--honey-yellow);
-            margin: 20px 0;
-            font-weight: 700;
-        }
-
-        footer {
-            background: rgba(0,0,0,0.4);
-            padding: 50px 20px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
+    <div class="hero-wrapper">
         <div class="notice-tag">NOTICE:<br>DON'T USE WET SPOON.</div>
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 80px; margin: 0; color: #000;">S&S</h1>
-        <h2 style="letter-spacing: 10px; font-weight: 400; margin: 0; color: #fff;">RAW HONEY</h2>
+        
+        <div class="hero-bg">
+            </div>
+
+        <div class="branding">
+            <h1>S&S</h1>
+            <h2>Raw Honey</h2>
+        </div>
     </div>
 
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 40px;">OUR PRODUCTS</h2>
+        <h2 style="text-align: center; margin-bottom: 60px; letter-spacing: 2px;">OUR PRODUCTS</h2>
+        
         <div class="product-grid">
             <div class="card">
                 <img src="assets/Jar1.png" alt="Organic Forest Honey">
                 <h3>Organic Forest Honey</h3>
-                <div class="price-tag">₹550</div>
+                <div class="price">₹550</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
                 <img src="assets/Jar2.png" alt="Mountain Bloom">
                 <h3>Mountain Bloom - 500g</h3>
-                <div class="price-tag">₹580</div>
+                <div class="price">₹580</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
 
             <div class="card">
                 <img src="assets/Jar3.png" alt="Wildflower Comb">
                 <h3>Wildflower Comb - 300g</h3>
-                <div class="price-tag">₹620</div>
+                <div class="price">₹620</div>
                 <a href="#" class="btn-order">Order on WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <section class="benefits">
-        <h2>Why S&S Raw Honey?</h2>
-        <div class="benefit-grid">
-            <div>
-                <h3 style="color: var(--honey-yellow);">100% Raw</h3>
-                <p>Unfiltered & Unheated</p>
-            </div>
-            <div>
-                <h3 style="color: var(--honey-yellow);">Wild Sourced</h3>
-                <p>From Kangra Valley</p>
-            </div>
-            <div>
-                <h3 style="color: var(--honey-yellow);">Healthy</h3>
-                <p>Natural Antioxidants</p>
-            </div>
-        </div>
-    </section>
-
-    <div style="text-align: center; padding-bottom: 80px;">
-        <p style="letter-spacing: 2px;">PURE HONEY, FROM HIVE TO HOME.</p>
-        <div class="hindi-magic">शहद नहीं, हिमाचल का जादू।</div>
-        <p style="opacity: 0.6;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
+    <div style="text-align: center; padding: 60px 20px;">
+        <p style="letter-spacing: 2px; font-weight: 300;">PURE HONEY, FROM HIVE TO HOME.</p>
+        <p style="margin: 15px 0; color: var(--honey-yellow); font-size: 32px; font-weight: 700;">शहद नहीं, हिमाचल का जादू।</p>
+        <p style="font-style: italic; opacity: 0.7;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
     </div>
-
-    <footer>
-        <div>
-            <strong>CONTACT</strong><br>
-            +91 12345 67890<br>
-            info@srawhoney.com
-        </div>
-        <div>
-            <strong>LOCATION</strong><br>
-            SS, Palampur, Kangra<br>
-            Himachal Pradesh 176064
-        </div>
-    </footer>
 
 </body>
 </html>
