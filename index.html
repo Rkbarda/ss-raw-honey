@@ -26,19 +26,44 @@
             overflow-x: hidden;
         }
 
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            /* Linking to your Hero.png */
-            background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
-            height: 450px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+/* Update your Hero CSS to this */
+.hero {
+    position: relative;
+    /* Linking to your assets folder - Ensure names match exactly */
+    background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
+    height: 480px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* THE CSS DRIP EFFECT */
+    /* This creates the wavy bottom edge using a CSS mask */
+    --mask: radial-gradient(45.12px at 50% 61.50px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+            radial-gradient(45.12px at 50% -31.5px,#0000 99%,#000 101%) 50% 30px/120px 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
 
+/* Added a shadow effect behind the drip to make it pop */
+.hero-container {
+    filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.3));
+    margin-bottom: 50px;
+}
+
+.notice-tag {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: #123b2a;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+}
         .notice-tag {
             position: absolute;
             top: 20px;
