@@ -8,6 +8,7 @@
     <style>
         :root {
             --honey-yellow: #f4b400;
+            --honey-glow: #ffcc33;
             --dark-forest: #072a23;
             --whatsapp-green: #25D366;
         }
@@ -17,123 +18,187 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-forest);
-            /* 1. Honeycomb Pattern Background */
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNSKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
-            background-size: 60px;
+            /* 1. CSS Honeycomb Background */
+            background-image: 
+                radial-gradient(circle at center, rgba(244, 180, 0, 0.05) 0%, transparent 70%),
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCA1NiAxMDAiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNykiIHN0cm9rZS13aWR0aD0iMSI+PHBhdGggZD0iTTI4IDY2TDAgNTBWMThMMjggMkw1NiAxOFY1MEwyOCA2NnpNMjggMTAwTDAgODRWNThMMjggNDJMMzcgNDcuNSIvPjwvZz48L3N2Zz4=');
+            background-size: cover, 56px 100px;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* 3. Honey Loading Animation */
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
+        /* 3. Dropdown Loading Animation */
+        @keyframes pourHoney {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
         }
 
-        .hero-bg {
-            background: var(--honey-yellow) url('assets/Hero.png') center/cover no-repeat;
-            height: 350px;
+        .hero-section {
             position: relative;
-            animation: slideDown 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 5;
-            /* 2. Realistic Mask Drip */
-            mask-image: radial-gradient(50px at 50% 100%, #000 98%, #0000), linear-gradient(#000 0 0);
-            mask-size: 100px 100%, 100% calc(100% - 50px);
+            background: var(--honey-yellow);
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: pourHoney 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 10;
+            /* 2. Realistic CSS Drip Shape */
+            mask-image: radial-gradient(55px at 50% 100%, #000 98%, #0000), linear-gradient(#000 0 0);
+            mask-size: 110px 100%, 100% calc(100% - 60px);
             mask-repeat: repeat-x, no-repeat;
             mask-position: bottom;
-            -webkit-mask-image: radial-gradient(50px at 50% 100%, #000 98%, #0000), linear-gradient(#000 0 0);
-            -webkit-mask-size: 100px 100%, 100% calc(100% - 50px);
+            -webkit-mask-image: radial-gradient(55px at 50% 100%, #000 98%, #0000), linear-gradient(#000 0 0);
+            -webkit-mask-size: 110px 100%, 100% calc(100% - 60px);
             -webkit-mask-repeat: repeat-x, no-repeat;
             -webkit-mask-position: bottom;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            box-shadow: inset 0 -20px 30px rgba(0,0,0,0.1);
         }
 
-        /* 4. Bee Animations */
-        @keyframes flyAround {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, -50px) rotate(10deg); }
-            50% { transform: translate(200px, 20px) rotate(-10deg); }
-            75% { transform: translate(-50px, 80px) rotate(5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
-
-        @keyframes beeLanding {
-            0% { transform: translate(-200px, -200px) scale(0); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
-        .bee {
+        /* Realistic Drip Shadow and Highlights */
+        .hero-section::before {
+            content: "";
             position: absolute;
-            width: 40px;
-            z-index: 20;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 70%, rgba(255,255,255,0.3) 85%, transparent 100%);
             pointer-events: none;
         }
 
-        .bee-static { top: 280px; left: 20%; animation: beeLanding 2s forwards 1.5s; opacity: 0; animation-fill-mode: forwards; }
-        .bee-bg { top: 50%; left: 10%; opacity: 0.3; animation: flyAround 15s infinite linear; }
-
         .branding {
             text-align: center;
-            margin-top: 40px;
+            padding: 50px 0;
             position: relative;
-            z-index: 10;
         }
 
-        .branding h1 { font-family: 'Playfair Display', serif; font-size: 70px; color: var(--honey-yellow); }
-        .branding h2 { letter-spacing: 10px; font-weight: 300; text-transform: uppercase; margin-top: -10px; }
+        .branding h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 80px; 
+            color: var(--honey-yellow); 
+            line-height: 0.8;
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+        }
 
-        .container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        .branding h2 { 
+            letter-spacing: 12px; 
+            font-weight: 300; 
+            text-transform: uppercase; 
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* 4. CSS Animated Bees */
+        .bee-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        @keyframes beePath {
+            0% { transform: translate(0,0) rotate(0deg); }
+            25% { transform: translate(50vw, 20px) rotate(10deg); }
+            50% { transform: translate(90vw, -20px) rotate(-10deg); }
+            75% { transform: translate(40vw, 50px) rotate(5deg); }
+            100% { transform: translate(0,0) rotate(0deg); }
+        }
+
+        .css-bee {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: var(--honey-yellow);
+            border-radius: 50%;
+            animation: beePath 20s infinite linear;
+            box-shadow: inset -5px 0 0 #000, inset 5px 0 0 #000;
+        }
+
+        .css-bee::after, .css-bee::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50% 50% 0 50%;
+            top: -10px;
+            left: 5px;
+        }
+
+        .css-bee::before {
+            left: 10px;
+            border-radius: 50% 50% 50% 0;
+        }
+
+        /* PRODUCTS CONTAINER */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
         }
 
         .card {
-            background: white;
-            border-radius: 25px;
+            background: #fff;
+            border-radius: 30px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: 0.3s;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; max-width: 160px; margin-bottom: 20px; }
-        .card h3 { color: #333; }
-        .price { color: #1f7a4a; font-weight: 700; font-size: 24px; margin: 15px 0; }
+        .card:hover { transform: translateY(-15px) scale(1.02); }
+
+        .card img {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+        }
+
+        .card h3 { color: #222; font-size: 1.4rem; margin-bottom: 8px; }
+        .price { color: #1f7a4a; font-weight: 800; font-size: 1.6rem; margin: 15px 0; }
 
         .btn-order {
             background: var(--whatsapp-green);
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             font-weight: 600;
             display: inline-block;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .notice-tag {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 25px;
+            right: 25px;
             background: #000;
-            color: #fff;
-            padding: 10px;
-            font-size: 10px;
-            border-radius: 5px;
-            z-index: 100;
+            padding: 12px;
+            font-size: 11px;
+            border-radius: 8px;
+            font-weight: 700;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/517/517563.png" class="bee bee-bg" alt="bee">
+    <div class="bee-container">
+        <div class="css-bee" style="top: 50%; left: 10%;"></div>
+        <div class="css-bee" style="top: 20%; right: 10%; animation-delay: -5s;"></div>
+    </div>
 
-    <div class="hero-bg">
+    <div class="hero-section">
         <div class="notice-tag">NOTICE:<br>DON'T USE WET SPOON.</div>
-        <img src="https://cdn-icons-png.flaticon.com/512/517/517563.png" class="bee bee-static" alt="landing bee">
+        <div style="text-align: center;">
+             <p style="color: #000; font-weight: 800; letter-spacing: 5px; margin-bottom: 10px;">PREMIUM QUALITY</p>
+             <div style="width: 100px; height: 4px; background: #000; margin: 0 auto;"></div>
+        </div>
     </div>
 
     <div class="branding">
@@ -147,26 +212,29 @@
                 <img src="assets/Jar1.png" alt="Forest Honey">
                 <h3>Organic Forest Honey</h3>
                 <div class="price">₹550</div>
-                <a href="#" class="btn-order">Order on WhatsApp</a>
+                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
             </div>
+
             <div class="card">
                 <img src="assets/Jar2.png" alt="Mountain Bloom">
                 <h3>Mountain Bloom - 500g</h3>
                 <div class="price">₹580</div>
-                <a href="#" class="btn-order">Order on WhatsApp</a>
+                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
             </div>
+
             <div class="card">
                 <img src="assets/Jar3.png" alt="Wildflower">
                 <h3>Wildflower Comb - 300g</h3>
                 <div class="price">₹620</div>
-                <a href="#" class="btn-order">Order on WhatsApp</a>
+                <a href="https://wa.me/911234567890" class="btn-order">Order on WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <div style="text-align: center; padding: 40px;">
-        <p style="letter-spacing: 2px;">PURE HONEY, FROM HIVE TO HOME.</p>
-        <h3 style="color: var(--honey-yellow); margin-top: 10px;">शहद नहीं, हिमाचल का जादू।</h3>
+    <div style="text-align: center; padding: 80px 20px;">
+        <p style="letter-spacing: 3px; font-weight: 300; opacity: 0.8;">PURE HONEY, FROM HIVE TO HOME.</p>
+        <h2 style="color: var(--honey-yellow); font-size: 2.5rem; margin-top: 20px;">शहद नहीं, हिमाचल का जादू।</h2>
+        <p style="font-style: italic; opacity: 0.5; margin-top: 10px;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
     </div>
 
 </body>
