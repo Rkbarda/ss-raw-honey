@@ -9,251 +9,148 @@
 
 <style>
 :root{
-    --honey-main:#f4b400;
-    --honey-deep:#d49a00;
-    --forest:#072a23;
+  --honey:#f4b400;
+  --forest:#072a23;
 }
 
-/* BODY */
-body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    color:#fff;
-    overflow-x:hidden;
-}
+*{box-sizing:border-box;}
+body{margin:0;font-family:Poppins,sans-serif;overflow-x:hidden;}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
-    position:relative;
-    min-height:520px;
-    overflow:visible;
-
-    background-color:var(--forest);
-    background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0yOCA2NkwwIDUwVjE4TDI4IDJMNTYgMThWNTBMMjggNjZ6IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjQ0LDE4MCwwLDAuMDYpIi8+PC9zdmc+');
+  position:relative;
+  background:var(--honey);
+  padding-bottom:0;
 }
 
 /* NOTICE */
 .notice{
-    position:absolute;
-    top:25px;
-    right:30px;
-    background:#000;
-    padding:10px 15px;
-    font-size:10px;
-    font-weight:700;
-    border-radius:4px;
-    z-index:120;
+  position:absolute;
+  top:25px;
+  right:30px;
+  background:#000;
+  color:#fff;
+  font-size:10px;
+  padding:10px 14px;
+  border-radius:4px;
+  font-weight:700;
+  z-index:20;
 }
 
 /* JAR */
 .hero-jar{
-    position:absolute;
-    left:8%;
-    top:60px;
-    width:260px;
-    z-index:90;
-    transform:rotate(-12deg);
-    filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));
+  position:absolute;
+  left:6%;
+  top:80px;
+  width:260px;
+  transform:rotate(-12deg);
+  z-index:15;
+  filter:drop-shadow(0 18px 30px rgba(0,0,0,.4));
 }
 
 /* SPOON */
-.spoon-container{
-    position:absolute;
-    top:0;
-    right:10%;
-    width:300px;
-    z-index:110;
-    animation:spoonDrip 3s ease-in-out infinite alternate;
+.spoon{
+  position:absolute;
+  top:30px;
+  right:12%;
+  width:260px;
+  z-index:15;
 }
 
-@keyframes spoonDrip{
-    0%{transform:translateY(0) rotate(0deg);}
-    100%{transform:translateY(15px) rotate(2deg);}
+/* BRAND */
+.brand{
+  text-align:center;
+  padding:140px 20px 120px;
 }
 
-/* HONEY BANNER */
-.honey-banner{
-    position:relative;
-    width:100%;
-    height:480px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+.brand p{
+  letter-spacing:5px;
+  font-weight:700;
 }
 
-/* HONEY LIQUID (MASKED) */
-.honey-liquid{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg,var(--honey-main),var(--honey-deep));
-    z-index:1;
+.brand h1{
+  font-family:'Playfair Display',serif;
+  font-size:96px;
+  margin:10px 0;
+}
 
-    -webkit-mask-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="none">\
-<path d="M0,0H1200V190 \
-C1150,190 1140,230 1120,250 \
-C1100,270 1060,270 1040,250 \
-C1020,230 1010,190 960,190 \
-C910,190 900,230 880,250 \
-C860,270 820,270 800,250 \
-C780,230 770,190 720,190 \
-C670,190 660,230 640,250 \
-C620,270 580,270 560,250 \
-C540,230 530,190 480,190 \
-C430,190 420,230 400,250 \
-C380,270 340,270 320,250 \
-C300,230 290,190 240,190 \
-C190,190 180,230 160,250 \
-C140,270 100,270 80,250 \
-C60,230 50,190 0,190Z"/>\
+.brand h2{
+  letter-spacing:14px;
+  font-size:18px;
+}
+
+/* ================= DRIP ================= */
+.drip{
+  position:relative;
+  height:160px;
+  background:var(--forest);
+}
+
+.drip::before{
+  content:'';
+  position:absolute;
+  top:-160px;
+  left:0;
+  width:100%;
+  height:160px;
+  background:var(--honey);
+
+  -webkit-mask-image:url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" preserveAspectRatio="none">\
+<path d="M0,0 H1200 V80 \
+C1100,80 1100,140 1000,140 \
+C900,140 900,80 800,80 \
+C700,80 700,140 600,140 \
+C500,140 500,80 400,80 \
+C300,80 300,140 200,140 \
+C100,140 100,80 0,80 Z"/>\
 </svg>');
-    -webkit-mask-size:100% 100%;
-    transform-origin:top;
-    animation:pour 1.5s cubic-bezier(.19,1,.22,1) forwards;
+  -webkit-mask-size:100% 100%;
 }
 
-/* DEPTH SHADOW */
-.honey-liquid::after{
-    content:'';
-    position:absolute;
-    bottom:-2px;
-    left:0;
-    width:100%;
-    height:30px;
-    background:linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.25),
-        rgba(0,0,0,0)
-    );
+/* ================= GREEN SECTION ================= */
+.green{
+  height:260px;
+  background:
+    linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)),
+    url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="32">\
+<path d="M28 0L56 16L28 32L0 16Z" fill="none" stroke="rgba(244,180,0,.08)"/>\
+</svg>');
 }
 
-/* POUR ANIMATION */
-@keyframes pour{
-    from{transform:scaleY(0);}
-    to{transform:scaleY(1);}
-}
-
-/* BRANDING */
-.branding{
-    position:relative;
-    z-index:2;
-}
-
-.branding p{
-    color:#000;
-    font-weight:800;
-    letter-spacing:5px;
-    margin-bottom:10px;
-}
-
-.branding h1{
-    font-family:'Playfair Display',serif;
-    font-size:100px;
-    color:#000;
-    margin:0;
-    line-height:.8;
-}
-
-.branding h2{
-    letter-spacing:15px;
-    text-transform:uppercase;
-    font-size:1.2rem;
-    color:#fff;
-    margin-top:10px;
-}
-
-/* PRODUCTS */
-.container{
-    max-width:1100px;
-    margin:80px auto;
-    padding:0 20px;
-}
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:40px;
-}
-
-.card{
-    background:#fff;
-    color:#333;
-    border-radius:30px;
-    padding:40px 20px;
-    text-align:center;
-    box-shadow:0 20px 40px rgba(0,0,0,.4);
-    transition:.3s;
-}
-
-.card:hover{transform:translateY(-10px);}
-
-.card img{width:160px;margin-bottom:20px;}
-
-.price{
-    color:#1f7a4a;
-    font-size:1.5rem;
-    font-weight:700;
-}
-
-.btn-whatsapp{
-    background:#25D366;
-    color:#fff;
-    padding:12px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    display:inline-block;
-}
-
-/* MOBILE SAFETY */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-    .hero{min-height:620px;}
-    .honey-banner{height:520px;}
-    .hero-jar{width:180px;top:90px;left:5%;}
-    .spoon-container{width:220px;top:10px;right:5%;}
-    .branding h1{font-size:64px;}
-    .branding h2{letter-spacing:8px;font-size:.9rem;}
-}
-
-@media(max-width:480px){
-    .hero{min-height:700px;}
-    .hero-jar{width:150px;top:120px;}
-    .spoon-container{width:180px;top:20px;}
+  .hero-jar{width:180px;top:100px;}
+  .spoon{width:180px;top:50px;}
+  .brand h1{font-size:64px;}
+  .brand h2{letter-spacing:8px;}
+  .drip{height:120px;}
+  .drip::before{top:-120px;height:120px;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<section class="hero">
 
-    <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
+  <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
 
-    <img src="assets/Jar1.png" class="hero-jar" alt="Honey Jar">
+  <img src="assets/Jar1.png" class="hero-jar" alt="Honey Jar">
 
-    <div class="spoon-container">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <rect x="150" y="20" width="10" height="100" rx="5" fill="#8d6e63" transform="rotate(-45 150 20)"/>
-            <ellipse cx="80" cy="110" rx="35" ry="25" fill="#bcaaa4" transform="rotate(-15 80 110)"/>
-            <path d="M50,105 Q80,75 115,105 Q120,140 80,150 Q40,140 50,105" fill="#f4b400"/>
-            <path d="M75,145 Q80,185 85,145" fill="#f4b400">
-                <animate attributeName="d" dur="2s" repeatCount="indefinite"
-                values="M75,145 Q80,165 85,145;M75,145 Q80,200 85,145;M75,145 Q80,165 85,145"/>
-            </path>
-        </svg>
-    </div>
+  <img src="assets/spoon.png" class="spoon" alt="Spoon">
 
-    <div class="honey-banner">
-        <div class="honey-liquid"></div>
-        <div class="branding">
-            <p>PREMIUM RAW HONEY</p>
-            <h1>S&S</h1>
-            <h2>RAW HONEY</h2>
-        </div>
-    </div>
+  <div class="brand">
+    <p>PREMIUM RAW HONEY</p>
+    <h1>S&amp;S</h1>
+    <h2>RAW HONEY</h2>
+  </div>
 
-</div>
+</section>
+
+<div class="drip"></div>
+<div class="green"></div>
 
 </body>
 </html>
