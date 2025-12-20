@@ -1,263 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S&S Raw Honey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&S Raw Honey | Pure & Unfiltered</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --honey: #f4b400;
+            --honey-dark: #d49a00;
+            --forest: #072a23;
+            --white: #ffffff;
+        }
 
-<style>
-:root{
-  --honey:#f4b400;
-  --honey-dark:#d49a00;
-  --forest:#072a23;
-}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--forest);
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-/* GLOBAL */
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background-color:var(--forest);
-  color:#fff;
-  overflow-x:hidden;
-}
+        /* HONEYCOMB PATTERN BACKGROUND */
+        .pattern {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="56" height="32"><path d="M28 0L56 16L28 32L0 16Z" fill="none" stroke="rgba(244,180,0,0.1)"/></svg>');
+        }
 
-/* HONEYCOMB PATTERN */
-.pattern{
-  background-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" width="56" height="32">\
-<path d="M28 0L56 16L28 32L0 16Z" fill="none" stroke="rgba(244,180,0,.08)"/>\
-</svg>');
-}
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 700px;
+            background: linear-gradient(180deg, var(--honey) 0%, var(--honey-dark) 400px, var(--forest) 600px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
-/* HERO */
-.hero{
-  position:relative;
-  height:520px;
-  overflow:hidden;
-}
+        /* CSS DROPS */
+        .drops {
+            position: absolute;
+            top: 400px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+        }
 
-.notice{
-  position:absolute;
-  top:25px;
-  right:30px;
-  background:#000;
-  padding:10px 15px;
-  font-size:10px;
-  font-weight:700;
-  border-radius:4px;
-  z-index:20;
-}
+        .drop {
+            width: 30px;
+            height: 30px;
+            background: var(--honey-dark);
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(45deg);
+            animation: drip 3s infinite ease-in;
+        }
 
-.hero-jar{
-  position:absolute;
-  left:7%;
-  top:60px;
-  width:260px;
-  transform:rotate(-12deg);
-  z-index:10;
-  filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));
-}
+        .drop:nth-child(2) { animation-delay: 0.5s; height: 45px; }
+        .drop:nth-child(3) { animation-delay: 1.2s; height: 25px; }
 
-.spoon{
-  position:absolute;
-  top:0;
-  right:8%;
-  width:300px;
-  z-index:15;
-}
+        @keyframes drip {
+            0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(200px) rotate(45deg) scale(0.5); opacity: 0; }
+        }
 
-/* HONEY HEADER */
-.honey-header{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,var(--honey),var(--honey-dark));
-  -webkit-mask-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="none">\
-<path d="M0,0H1200V215 \
-C1120,215 1100,245 1060,245 \
-C1020,245 1000,215 940,215 \
-C880,215 860,245 820,245 \
-C780,245 760,215 700,215 \
-C640,215 620,245 580,245 \
-C540,245 520,215 460,215 \
-C400,215 380,245 340,245 \
-C300,245 280,215 220,215 \
-C160,215 140,245 100,245 \
-C60,245 40,215 0,215Z"/>\
-</svg>');
-  -webkit-mask-size:100% 100%;
-}
+        /* HERO TEXT */
+        .brand-content { z-index: 10; color: #000; }
+        .brand-content p { letter-spacing: 5px; font-weight: 700; margin-bottom: 0; }
+        .brand-content h1 { font-family: 'Playfair Display', serif; font-size: 120px; margin: 0; line-height: 1; }
+        .brand-content h2 { letter-spacing: 12px; font-size: 1.2rem; margin-top: 10px; }
 
-.honey-header::after{
-  content:'';
-  position:absolute;
-  bottom:-2px;
-  width:100%;
-  height:55px;
-  background:radial-gradient(ellipse at center top,
-    rgba(0,0,0,.25),
-    rgba(0,0,0,0) 70%);
-}
+        /* NOTICE BOX */
+        .notice {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 15px;
+            font-size: 11px;
+            border: 1px solid var(--honey);
+            border-radius: 8px;
+            text-align: center;
+        }
 
-/* BRAND */
-.brand{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  z-index:5;
-}
+        /* WHY RAW SECTION (New Content) */
+        .about-raw {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
 
-.brand p{
-  color:#000;
-  letter-spacing:5px;
-  font-weight:700;
-}
+        .about-raw h2 { color: var(--honey); font-size: 2.5rem; margin-bottom: 20px; }
+        .about-raw p { line-height: 1.8; opacity: 0.9; }
 
-.brand h1{
-  font-family:'Playfair Display',serif;
-  font-size:100px;
-  margin:0;
-  color:#000;
-}
+        /* GRID SYSTEM */
+        .grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+        }
 
-.brand h2{
-  letter-spacing:12px;
-  font-size:1.1rem;
-}
+        .card {
+            background: #fff;
+            color: #333;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: 0.3s;
+        }
 
-/* PRODUCTS */
-.products{
-  padding:100px 20px;
-}
+        .card:hover { transform: translateY(-10px); }
 
-.grid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:40px;
-}
+        /* PLACEHOLDER JAR (CSS) */
+        .jar-shape {
+            width: 100px;
+            height: 120px;
+            background: var(--honey);
+            margin: 0 auto 20px;
+            border-radius: 10px 10px 40px 40px;
+            border: 4px solid #cc9600;
+            position: relative;
+        }
+        .jar-shape::after {
+            content: "PURE";
+            position: absolute;
+            top: 40%; left: 0; width: 100%;
+            font-size: 12px; font-weight: bold; color: rgba(0,0,0,0.3);
+        }
 
-.card{
-  background:#fff;
-  color:#333;
-  border-radius:30px;
-  padding:40px 20px;
-  text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
-  transition:.3s;
-}
+        .price { font-size: 1.6rem; color: #1f7a4a; font-weight: 700; margin: 15px 0; }
+        
+        .whatsapp {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-.card:hover{
-  transform:translateY(-10px);
-}
+        footer { padding: 60px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
 
-.card img{
-  width:160px;
-  margin-bottom:20px;
-}
-
-.price{
-  font-size:1.5rem;
-  color:#1f7a4a;
-  font-weight:700;
-}
-
-.whatsapp{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 30px;
-  background:#25D366;
-  color:#fff;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* FOOTER */
-footer{
-  padding:60px 20px;
-  text-align:center;
-  font-size:14px;
-  opacity:.8;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .hero{height:620px;}
-  .hero-jar{width:180px;top:90px;}
-  .spoon{width:200px;}
-  .brand h1{font-size:64px;}
-}
-</style>
+        @media(max-width: 768px) {
+            .brand-content h1 { font-size: 70px; }
+        }
+    </style>
 </head>
-
 <body class="pattern">
 
-<!-- HERO -->
-<section class="hero">
+    <section class="hero">
+        <div class="notice">⚠️ WARNING<br>NEVER USE A WET SPOON<br>TO PRESERVE PURITY</div>
+        
+        <div class="drops">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+        </div>
 
-  <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
+        <div class="brand-content">
+            <p>ESTABLISHED 2025</p>
+            <h1>S&S</h1>
+            <h2>RAW HONEY</h2>
+        </div>
+    </section>
 
-  <img src="assets/Jar1.png" class="hero-jar" alt="Honey Jar">
+    <section class="about-raw">
+        <h2>From Hive to Home</h2>
+        <p>Our honey is never heated, never ultra-filtered, and never blended with syrups. We provide honey exactly as the bees made it—rich in enzymes, antioxidants, and natural pollen.</p>
+    </section>
 
-  <img src="assets/spoon.svg" class="spoon" alt="Spoon">
+    <section class="products">
+        <div class="grid">
+            <div class="card">
+                <div class="jar-shape"></div>
+                <h3>Organic Forest Honey</h3>
+                <p>Harvested from deep within the protected forest reserves.</p>
+                <div class="price">₹550</div>
+                <a class="whatsapp" href="#">Order via WhatsApp</a>
+            </div>
 
-  <div class="honey-header"></div>
+            <div class="card">
+                <div class="jar-shape" style="background: #f7ca4a;"></div>
+                <h3>Mountain Bloom</h3>
+                <p>A light, floral honey from high-altitude wildflowers.</p>
+                <div class="price">₹580</div>
+                <a class="whatsapp" href="#">Order via WhatsApp</a>
+            </div>
 
-  <div class="brand">
-    <div>
-      <p>PREMIUM RAW HONEY</p>
-      <h1>S&S</h1>
-      <h2>RAW HONEY</h2>
-    </div>
-  </div>
+            <div class="card">
+                <div class="jar-shape" style="background: #d49a00;"></div>
+                <h3>Wildflower Comb</h3>
+                <p>Rich, dark honey containing chunks of raw honeycomb.</p>
+                <div class="price">₹620</div>
+                <a class="whatsapp" href="#">Order via WhatsApp</a>
+            </div>
+        </div>
+    </section>
 
-</section>
-
-<!-- PRODUCTS -->
-<section class="products pattern">
-  <div class="grid">
-
-    <div class="card">
-      <img src="assets/Jar1.png">
-      <h3>Organic Forest Honey</h3>
-      <div class="price">₹550</div>
-      <a class="whatsapp"
-        href="https://wa.me/91XXXXXXXXXX?text=Organic%20Forest%20Honey"
-        target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="card">
-      <img src="assets/Jar2.png">
-      <h3>Mountain Bloom</h3>
-      <div class="price">₹580</div>
-      <a class="whatsapp"
-        href="https://wa.me/91XXXXXXXXXX?text=Mountain%20Bloom%20Honey"
-        target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="card">
-      <img src="assets/Jar3.png">
-      <h3>Wildflower Comb</h3>
-      <div class="price">₹620</div>
-      <a class="whatsapp"
-        href="https://wa.me/91XXXXXXXXXX?text=Wildflower%20Comb%20Honey"
-        target="_blank">Order on WhatsApp</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="pattern">
-  © 2025 S&S Raw Honey · Pure · Natural · Unfiltered
-</footer>
+    <footer class="pattern">
+        <p><strong>S&S Raw Honey Co.</strong></p>
+        <p>Pure · Natural · Unfiltered · Ethically Sourced</p>
+        <p style="font-size: 12px; opacity: 0.6;">© 2025 All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
