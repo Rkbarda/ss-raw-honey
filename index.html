@@ -9,9 +9,9 @@
 
 <style>
 :root{
-  --yellow:#f4b400;
-  --dark:#0f3d33;
-  --green:#1f7a4a;
+  --honey:#f4b400;
+  --honey-light:#ffd966;
+  --green:#0f3d33;
 }
 
 *{box-sizing:border-box}
@@ -19,21 +19,25 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:var(--dark);
+  background:var(--green);
   color:#fff;
 }
 
-/* ================= BANNER ================= */
+/* ================= HEADER / BANNER ================= */
 .banner{
   position:relative;
-  height:440px;
-  background:linear-gradient(
-    to bottom,
-    #f7c531 0%,
-    #f4b400 55%,
-    #0f3d33 55%,
-    #0f3d33 100%
-  );
+  height:460px;
+  background:
+    radial-gradient(circle at 20% 10%, #ffe08a 0%, transparent 40%),
+    radial-gradient(circle at 80% 15%, #ffd24d 0%, transparent 45%),
+    linear-gradient(
+      to bottom,
+      #ffe08a 0%,
+      #f7c531 35%,
+      #f4b400 50%,
+      #0f3d33 50%,
+      #0f3d33 100%
+    );
   overflow:hidden;
   display:flex;
   align-items:center;
@@ -41,27 +45,44 @@ body{
   text-align:center;
 }
 
-/* Animated honey drip */
+/* Honey shine */
+.banner::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:120px;
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,.55),
+    rgba(255,255,255,.15),
+    transparent
+  );
+}
+
+/* Honey drip */
 .banner::after{
   content:"";
   position:absolute;
-  top:55%;
+  top:50%;
   left:0;
   width:100%;
-  height:140px;
-  animation: drip 3s ease-in-out infinite;
+  height:160px;
   background:
-    radial-gradient(circle at 8% 0%, var(--yellow) 45%, transparent 46%),
-    radial-gradient(circle at 25% 0%, var(--yellow) 50%, transparent 51%),
-    radial-gradient(circle at 42% 0%, var(--yellow) 40%, transparent 41%),
-    radial-gradient(circle at 60% 0%, var(--yellow) 48%, transparent 49%),
-    radial-gradient(circle at 78% 0%, var(--yellow) 42%, transparent 43%),
-    radial-gradient(circle at 92% 0%, var(--yellow) 38%, transparent 39%);
+    radial-gradient(circle at 6% 0%, var(--honey) 55%, transparent 56%),
+    radial-gradient(circle at 18% 0%, var(--honey-light) 60%, transparent 61%),
+    radial-gradient(circle at 32% 0%, var(--honey) 50%, transparent 51%),
+    radial-gradient(circle at 48% 0%, var(--honey-light) 62%, transparent 63%),
+    radial-gradient(circle at 64% 0%, var(--honey) 55%, transparent 56%),
+    radial-gradient(circle at 78% 0%, var(--honey-light) 60%, transparent 61%),
+    radial-gradient(circle at 92% 0%, var(--honey) 52%, transparent 53%);
+  animation: drip 3.5s ease-in-out infinite;
 }
 
 @keyframes drip{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(8px); }
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
 }
 
 /* Notice */
@@ -76,7 +97,7 @@ body{
   z-index:3;
 }
 
-/* Banner content */
+/* Banner text */
 .banner-content{
   position:relative;
   z-index:2;
@@ -88,23 +109,27 @@ body{
 }
 
 .banner h1{
-  margin:14px 0 6px;
-  font-size:48px;
-  color:var(--yellow);
+  margin:12px 0 4px;
+  font-size:52px;
+  color:var(--honey);
+  text-shadow:
+    0 4px 10px rgba(0,0,0,.35),
+    0 0 20px rgba(244,180,0,.6);
 }
 
 .banner h2{
   font-size:14px;
-  letter-spacing:5px;
+  letter-spacing:6px;
 }
 
-/* Jar */
+/* Main jar */
 .banner-jar{
   position:absolute;
   left:60px;
   bottom:80px;
   width:220px;
-  transform:rotate(-10deg);
+  transform:rotate(-8deg);
+  filter:drop-shadow(0 20px 25px rgba(0,0,0,.4));
   z-index:2;
 }
 
@@ -115,7 +140,7 @@ body{
   height:12px;
   background:#ffcc00;
   border-radius:50%;
-  animation: fly 10s linear infinite;
+  animation: fly 12s linear infinite;
 }
 
 .bee::before,
@@ -129,18 +154,18 @@ body{
   top:-6px;
 }
 
-.bee::before{ left:-4px; }
-.bee::after{ right:-4px; }
+.bee::before{left:-4px}
+.bee::after{right:-4px}
 
 @keyframes fly{
-  0%{ transform:translateX(-10vw) translateY(0); }
-  50%{ transform:translateX(50vw) translateY(-30px); }
-  100%{ transform:translateX(110vw) translateY(10px); }
+  0%{transform:translateX(-10vw) translateY(0)}
+  50%{transform:translateX(50vw) translateY(-40px)}
+  100%{transform:translateX(110vw) translateY(20px)}
 }
 
 /* ================= PRODUCTS ================= */
 section{
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
 }
 
@@ -149,21 +174,27 @@ section{
   margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
+  gap:32px;
 }
 
 .card{
   background:#fff;
   color:#000;
-  border-radius:20px;
+  border-radius:24px;
   padding:28px;
-  box-shadow:0 15px 30px rgba(0,0,0,.3);
+  box-shadow:0 18px 30px rgba(0,0,0,.35);
+}
+
+.card img{
+  width:140px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 10px 15px rgba(0,0,0,.35));
 }
 
 .price{
-  color:var(--green);
+  color:#1f7a4a;
   font-weight:600;
-  margin:12px 0 18px;
+  margin:10px 0 18px;
 }
 
 .btn{
@@ -175,15 +206,15 @@ section{
   font-size:14px;
 }
 
-/* ================= WHATSAPP FLOAT ================= */
+/* ================= WHATSAPP ================= */
 .whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
-  background:#25D366;
-  color:#fff;
   width:56px;
   height:56px;
+  background:#25D366;
+  color:#fff;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -203,35 +234,21 @@ footer{
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-  .banner{
-    height:400px;
-  }
-
-  .banner-jar{
-    width:150px;
-    left:20px;
-    bottom:100px;
-  }
-
-  .banner h1{
-    font-size:36px;
-  }
-
-  section{
-    padding:40px 16px;
-  }
+  .banner{height:420px}
+  .banner-jar{width:150px; left:20px}
+  .banner h1{font-size:38px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- BANNER -->
+<!-- HEADER -->
 <div class="banner">
 
-  <div class="notice">NOTICE:<br>DON'T USE WET SPOON</div>
+  <div class="notice">NOTICE<br>DON'T USE WET SPOON</div>
 
-  <img src="assets/jar1.png" class="banner-jar" alt="Raw Honey">
+  <img src="assets/Jar1.png" class="banner-jar" alt="Honey Jar">
 
   <div class="banner-content">
     <small>PREMIUM RAW HONEY</small>
@@ -240,9 +257,9 @@ footer{
   </div>
 
   <!-- Bees -->
-  <div class="bee" style="top:80px; animation-delay:0s;"></div>
-  <div class="bee" style="top:140px; animation-delay:4s;"></div>
-  <div class="bee" style="top:200px; animation-delay:7s;"></div>
+  <div class="bee" style="top:80px;animation-delay:0s"></div>
+  <div class="bee" style="top:150px;animation-delay:4s"></div>
+  <div class="bee" style="top:220px;animation-delay:7s"></div>
 
 </div>
 
@@ -251,29 +268,34 @@ footer{
   <h2>Our Products</h2>
 
   <div class="products">
+
     <div class="card">
+      <img src="assets/Jar1.png" alt="">
       <h3>Forest Raw Honey</h3>
       <div class="price">₹550</div>
-      <a class="btn" href="#">Order Now</a>
+      <a class="btn" href="#">Order on WhatsApp</a>
     </div>
 
     <div class="card">
+      <img src="assets/Jar2.png" alt="">
       <h3>Wildflower Honey</h3>
       <div class="price">₹580</div>
-      <a class="btn" href="#">Order Now</a>
+      <a class="btn" href="#">Order on WhatsApp</a>
     </div>
 
     <div class="card">
+      <img src="assets/Jar3.png" alt="">
       <h3>Mountain Honey</h3>
       <div class="price">₹620</div>
-      <a class="btn" href="#">Order Now</a>
+      <a class="btn" href="#">Order on WhatsApp</a>
     </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  Pure Honey from Himachal Pradesh<br>
+  Pure Raw Honey from Himachal Pradesh<br>
   <small>© S&S Raw Honey</small>
 </footer>
 
