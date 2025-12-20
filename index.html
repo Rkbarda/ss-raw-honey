@@ -1,190 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S&S Raw Honey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&S Raw Honey | Himachal Ka Jadoo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --honey-yellow: #f4b400;
+            --dark-forest: #072a23;
+            --whatsapp-green: #25D366;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-:root{
-  --yellow:#f4b400;
-  --dark:#072a23; /* Darkened to match original */
-  --green:#1f7a4a;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-forest);
+            /* HONEYCOMB BACKGROUND */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNSKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
+            background-size: 60px;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-*{box-sizing:border-box}
+        /* BANNER CONTAINER */
+        .banner-wrapper {
+            position: relative;
+            width: 100%;
+            height: 450px;
+        }
 
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:var(--dark);
-  color:#fff;
-  /* 1. Honeycomb Pattern added back to background */
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NiIgdmlld0JveD0iMCAwIDQwIDQ2Ij48cGF0aCBkPSJNMjAgMEw0MCAxMS41VjM0LjVMMjAgNDZMMCAzNC41VjExLjVMMjAgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMTgwLDAsMC4wNSKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+');
-  background-size: 60px;
-}
+        /* THE DRIPPING HONEY BANNER */
+        .honey-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--honey-yellow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            
+            /* Pouring Animation */
+            animation: pour 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            
+            /* REALISTIC CSS DRIP MASK */
+            -webkit-mask-image: 
+                radial-gradient(60px at 10% 100%, #000 98%, #0000),
+                radial-gradient(40px at 30% 100%, #000 98%, #0000),
+                radial-gradient(70px at 55% 100%, #000 98%, #0000),
+                radial-gradient(45px at 85% 100%, #000 98%, #0000),
+                linear-gradient(#000 0 0);
+            -webkit-mask-size: 25% 150px, 25% 100px, 25% 180px, 25% 120px, 100% calc(100% - 60px);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: 10% bottom, 30% bottom, 55% bottom, 85% bottom, top;
+            
+            /* Honey Glow/Gloss */
+            box-shadow: inset 0 -20px 30px rgba(0,0,0,0.1);
+        }
 
-/* ================= BANNER ================= */
-.banner-container {
-  position: relative;
-  width: 100%;
-  height: 480px; 
-  z-index: 10;
-}
+        @keyframes pour {
+            from { height: 0; }
+            to { height: 400px; }
+        }
 
-.banner{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--yellow);
-  /* 3. Pouring Animation */
-  animation: pourHoney 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  
-  /* 2. Realistic Irregular Drip using CSS Mask */
-  -webkit-mask-image: 
-    radial-gradient(60px at 15% 100%, #000 98%, #0000),
-    radial-gradient(45px at 45% 100%, #000 98%, #0000),
-    radial-gradient(75px at 80% 100%, #000 98%, #0000),
-    linear-gradient(#000 0 0);
-  -webkit-mask-size: 34% 140px, 34% 100px, 34% 160px, 100% calc(100% - 60px);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: 15% bottom, 45% bottom, 80% bottom, top;
-}
+        /* LARGE JAR OVER BANNER */
+        .hero-jar {
+            position: absolute;
+            left: 10%;
+            top: 50px;
+            width: 240px;
+            transform: rotate(-12deg);
+            z-index: 20; /* Sits above the drip */
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+        }
 
-@keyframes pourHoney {
-  0% { height: 0; }
-  100% { height: 420px; }
-}
+        .notice-tag {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: #000;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 30;
+        }
 
-.notice{
-  position:absolute;
-  top:20px;
-  right:20px;
-  background:#000;
-  color:#fff;
-  padding:10px 14px;
-  font-size:10px;
-  font-weight: bold;
-  border-radius:4px;
-  z-index:15;
-}
+        .branding {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
 
-.banner-content{
-  position:relative;
-  z-index:10;
-  margin-top: -40px;
-}
+        .branding h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 90px;
+            color: #000;
+            line-height: 1;
+        }
 
-.banner-content h1{
-  font-size: 80px;
-  color: #000;
-  margin: 0;
-}
+        .branding h2 {
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 5px;
+        }
 
-/* 4. Placing Jar ABOVE the banner drip */
-.banner-jar{
-  position:absolute;
-  left:10%;
-  top: 60px;
-  width:220px;
-  transform:rotate(-10deg);
-  z-index:20; /* Higher than banner */
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
-}
+        /* PRODUCT SECTION */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
 
-/* ================= PRODUCTS ================= */
-.section-title {
-    margin: 100px auto 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
 
-.products{
-  max-width:1100px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-  padding-bottom: 60px;
-}
+        .card {
+            background: #fff;
+            border-radius: 30px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transition: 0.3s ease;
+            color: #333;
+        }
 
-.card{
-  background:#fff;
-  color:#000;
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
-  transition: transform 0.3s ease;
-}
+        .card:hover { transform: translateY(-10px); }
 
-.card:hover { transform: translateY(-10px); }
+        .card img {
+            width: 160px;
+            margin-bottom: 25px;
+        }
 
-.card img {
-    width: 150px;
-    margin-bottom: 15px;
-}
+        .price {
+            color: var(--green);
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin: 15px 0;
+        }
 
-.btn{
-  display:inline-block;
-  background:#25D366;
-  color:#fff;
-  text-decoration:none;
-  padding:12px 30px;
-  border-radius:30px;
-  font-weight: 600;
-}
-</style>
+        .btn-order {
+            background: var(--whatsapp-green);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* FOOTER BRANDING */
+        .hindi-text {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hindi-text h3 {
+            color: var(--honey-yellow);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="banner-container">
-  <div class="notice">
-    NOTICE:<br>DON'T USE WET SPOON
-  </div>
+    <div class="banner-wrapper">
+        <div class="notice-tag">NOTICE:<br>DON'T USE WET SPOON</div>
+        
+        <img src="assets/Jar1.png" class="hero-jar" alt="Hero Jar">
 
-  <img src="assets/Jar1.png" class="banner-jar" alt="Jar">
+        <div class="honey-banner">
+            <div class="branding">
+                <p style="color: #000; font-weight: 800; letter-spacing: 5px; margin-bottom: 10px;">PREMIUM RAW HONEY</p>
+                <h1>S&S</h1>
+                <h2>Raw Honey</h2>
+            </div>
+        </div>
+    </div>
 
-  <div class="banner">
-    <div class="banner-content">
-      <small style="color: #000; font-weight: 700; letter-spacing: 4px;">PREMIUM QUALITY</small>
-      <h1 style="font-family: 'Playfair Display', serif;">S&S</h1>
-      <h2 style="color: #fff; letter-spacing: 8px;">RAW HONEY</h2>
-    </div>
-  </div>
-</div>
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 60px; letter-spacing: 3px;">OUR PRODUCTS</h2>
+        
+        <div class="product-grid">
+            <div class="card">
+                <img src="assets/Jar1.png" alt="Organic Forest Honey">
+                <h3>Organic Forest Honey</h3>
+                <div class="price">₹550</div>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
+            </div>
 
-<section>
-  <h2 class="section-title">About Us</h2>
-  <div class="products">
-    <div class="card">
-      <img src="assets/Jar1.png" alt="Jar1">
-      <h3>Organic Forest Honey</h3>
-      <div class="price">₹550</div>
-      <a class="btn" href="#">Order on WhatsApp</a>
+            <div class="card">
+                <img src="assets/Jar2.png" alt="Mountain Bloom">
+                <h3>Mountain Bloom - 500g</h3>
+                <div class="price">₹580</div>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
+            </div>
+
+            <div class="card">
+                <img src="assets/Jar3.png" alt="Wildflower Comb">
+                <h3>Wildflower Comb - 300g</h3>
+                <div class="price">₹620</div>
+                <a href="#" class="btn-order">Order on WhatsApp</a>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <img src="assets/Jar2.png" alt="Jar2">
-      <h3>Mountain Bloom</h3>
-      <div class="price">₹580</div>
-      <a class="btn" href="#">Order on WhatsApp</a>
+
+    <div class="hindi-text">
+        <p style="letter-spacing: 2px; opacity: 0.7;">PURE HONEY, FROM HIVE TO HOME</p>
+        <h3>शहद नहीं, हिमाचल का जादू।</h3>
+        <p style="font-style: italic; opacity: 0.5;">SHAHAD NAHI, HIMACHAL KA JADOO.</p>
     </div>
-    <div class="card">
-      <img src="assets/Jar3.png" alt="Jar3">
-      <h3>Wildflower Comb</h3>
-      <div class="price">₹620</div>
-      <a class="btn" href="#">Order on WhatsApp</a>
-    </div>
-  </div>
-</section>
 
 </body>
 </html>
