@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&S Raw Honey | Himachal's Best</title>
+    <style>
+        :root {
+            --honey-gold: #FFC107;
+            --dark-green: #0b2b26;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-green);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes jarEntrance {
+            0% { transform: translateY(-100px) rotate(-20deg); opacity: 0; }
+            100% { transform: translateY(0) rotate(-10deg); opacity: 1; }
+        }
+
+        @keyframes honeyDrip {
+            0% { height: 0; }
+            100% { height: 150px; }
+        }
+
+        @keyframes beeFly {
+            0% { transform: translate(-10vw, 0) rotate(0deg); }
+            50% { transform: translate(50vw, -20px) rotate(10deg); }
+            100% { transform: translate(110vw, 10px) rotate(-10deg); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #163d37, var(--dark-green));
+            padding: 20px;
+        }
+
+        .jar-container {
+            animation: jarEntrance 1.5s ease-out forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        .honey-jar {
+            width: 150px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+        }
+
+        .honey-flow {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            width: 30px;
+            background: var(--honey-gold);
+            border-radius: 0 0 20px 20px;
+            animation: honeyDrip 2s 1.5s ease-in forwards;
+            z-index: 5;
+            box-shadow: inset -5px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .bee {
+            position: absolute;
+            font-size: 30px;
+            top: 20%;
+            animation: beeFly 6s linear infinite;
+            z-index: 15;
+        }
+
+        /* --- PRODUCT SECTION --- */
+        .product-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: var(--white);
+            color: #333;
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d48806;
+            margin: 10px 0;
+        }
+
+        /* --- WHATSAPP BUTTON --- */
+        .wa-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .wa-btn:hover {
+            background-color: #128C7E;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .product-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero { height: 50vh; }
+            .honey-jar { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bee">🐝</div>
+
+    <section class="hero">
+        <div class="jar-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Honey Jar" class="honey-jar">
+            <div class="honey-flow"></div>
+        </div>
+        <h1>S&S RAW HONEY</h1>
+        <p>शहद नहीं, हिमाचल का जादू।</p>
+    </section>
+
+    <section class="product-section">
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Forest Honey">
+                <h3>Organic Forest Honey</h3>
+                <p class="price">₹550</p>
+                <a href="https://wa.me/911234567890?text=I want to order Organic Forest Honey" class="wa-btn">Order on WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Mountain Bloom">
+                <h3>Mountain Bloom</h3>
+                <p class="price">₹580</p>
+                <a href="https://wa.me/911234567890?text=I want to order Mountain Bloom Honey" class="wa-btn">Order on WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2322/2322170.png" alt="Wildflower Comb">
+                <h3>Wildflower Comb</h3>
+                <p class="price">₹620</p>
+                <a href="https://wa.me/911234567890?text=I want to order Wildflower Comb Honey" class="wa-btn">Order on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.7;">
+        <p>Location: SS, Palampur, Himachal Pradesh 176064</p>
+        <p>Notice: Don't use a wet spoon!</p>
+    </footer>
+
+</body>
+</html>
