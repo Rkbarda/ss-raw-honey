@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&S Raw Honey</title>
+    <title>S&S Raw Honey | Premium Himachal Honey</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,6 +14,7 @@
             --forest: #072a23;
         }
 
+        /* GLOBAL STYLES */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -22,13 +23,13 @@
             overflow-x: hidden;
         }
 
-        /* 1. REFINED PATTERN: Minimalist hex grid that matches the dark aesthetic */
+        /* GEOMETRIC HEX PATTERN */
         .pattern {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52"><path d="M15 0l15 8.66v17.34L15 34.66 0 26V8.66L15 0z" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/></svg>');
-            background-size: 32px 54px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52"><path d="M15 0l15 8.66v17.34L15 34.66 0 26V8.66L15 0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            background-size: 30px 52px;
         }
 
-        /* 2. MATCHED HEADER: Deep organic drips */
+        /* HERO SECTION */
         .hero {
             position: relative;
             height: 600px;
@@ -36,189 +37,298 @@
             background-color: var(--forest);
         }
 
-        .honey-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #ffcc33 0%, var(--honey) 70%, var(--honey-dark) 100%);
-            z-index: 5;
-            
-            /* The Mask now matches the "Himachal Ka" branding style better */
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,0 H1200 V300 C1100,300 1050,480 950,480 C850,480 800,300 700,300 C600,300 550,480 450,480 C350,480 300,300 200,300 C100,300 50,480 0,480 Z" fill="black"/></svg>');
-            -webkit-mask-size: 100% 100%;
-            animation: honeySway 12s ease-in-out infinite alternate;
-        }
-
-        @keyframes honeySway {
-            from { transform: scaleY(1); }
-            to { transform: scaleY(1.03); }
-        }
-
-        /* 3. ALIGNED BRANDING: Positioning text to match the drip weight */
-        .brand {
-            position: absolute;
-            top: 40%; /* Moved slightly up to clear the drip curves */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
-            width: 100%;
-        }
-
-        .brand p { 
-            color: #000; 
-            letter-spacing: 6px; 
-            font-weight: 700; 
-            margin: 0; 
-            font-size: 11px; 
-            opacity: 0.9;
-        }
-
-        .brand h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 110px; 
-            margin: -5px 0; 
-            color: #000; 
-            line-height: 0.9;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .brand h2 { 
-            letter-spacing: 10px; 
-            font-size: 0.85rem; 
-            color: #000; 
-            margin-top: 10px; 
-            font-weight: 400; 
-            text-transform: uppercase;
-        }
-
-        /* FALLING DROPS: Matches the drip color exactly */
-        .drop {
-            position: absolute;
-            background: var(--honey-dark);
-            width: 14px;
-            height: 14px;
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            z-index: 4;
-            animation: fallDown 5s linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes fallDown {
-            0% { top: 350px; opacity: 1; }
-            80% { opacity: 0.8; }
-            100% { top: 850px; opacity: 0; }
-        }
-
-        /* Notice Box styling */
+        /* NOTICE BOX */
         .notice {
             position: absolute;
             top: 25px;
             right: 30px;
             background: #000;
             color: #fff;
-            padding: 10px 15px;
-            font-size: 10px;
+            padding: 8px 12px;
+            font-size: 9px;
             font-weight: 700;
-            border-radius: 3px;
-            z-index: 50;
-            border: 1px solid var(--honey);
+            border-radius: 2px;
+            z-index: 30;
+            text-align: center;
+            line-height: 1.4;
         }
 
-        /* Honey Dipper Positioning */
+        /* ANIMATED HONEY HEADER */
+        .honey-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #ffcc33, #f4b400);
+            z-index: 5;
+            
+            /* The "Drip" Shape Mask */
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,0 H1200 V300 C1100,300 1050,450 950,450 C850,450 800,300 700,300 C600,300 550,450 450,450 C350,450 300,300 200,300 C100,300 50,450 0,450 Z" fill="black"/></svg>');
+            -webkit-mask-size: 100% 100%; /* Reset mask size for pulsation */
+            
+            /* ANIMATION: Makes the honey look like it's subtly pulsating */
+            animation: honeyPulsate 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes honeyPulsate {
+            0% { transform: scaleY(1); }
+            50% { transform: scaleY(1.01) translateY(2px); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* FALLING HONEY DROPS */
+        .falling-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 6; /* Below brand, above honey header */
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--honey-dark);
+            border-radius: 50% 50% 50% 0; /* Teardrop shape */
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: fallAndFade 4s ease-in forwards; /* Each drop animates once */
+        }
+
+        /* Random delays for drops */
+        .drop:nth-child(1) { left: 15%; animation-delay: 0.5s; }
+        .drop:nth-child(2) { left: 35%; animation-delay: 1.2s; width: 8px; height: 8px; }
+        .drop:nth-child(3) { left: 55%; animation-delay: 2.0s; }
+        .drop:nth-child(4) { left: 70%; animation-delay: 0.8s; width: 12px; height: 12px; }
+        .drop:nth-child(5) { left: 25%; animation-delay: 2.5s; width: 7px; height: 7px; }
+        .drop:nth-child(6) { left: 85%; animation-delay: 1.5s; }
+
+
+        @keyframes fallAndFade {
+            0% { transform: translateY(300px) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(600px) rotate(-45deg); opacity: 0; }
+        }
+
+        /* HONEY DIPPER */
         .dipper {
             position: absolute;
-            top: -20px;
-            right: 15%;
-            z-index: 15;
-            transform-origin: top center;
-            animation: swayDipper 4s ease-in-out infinite alternate;
+            top: -40px;
+            right: 12%;
+            z-index: 20;
+            transform: rotate(10deg);
+            animation: dipperSway 4s ease-in-out infinite alternate;
         }
 
-        @keyframes swayDipper {
-            from { transform: rotate(-4deg); }
-            to { transform: rotate(4deg); }
+        @keyframes dipperSway {
+            from { transform: rotate(8deg) translateY(0px); }
+            to { transform: rotate(12deg) translateY(10px); }
         }
 
-        .dipper-stick { width: 8px; height: 220px; background: #6b3e1a; margin: 0 auto; border-radius: 4px; }
-        .dipper-head { 
-            width: 44px; height: 50px; 
-            background: repeating-linear-gradient(0deg, #96612d, #96612d 8px, #6b3e1a 8px, #6b3e1a 12px);
-            border-radius: 8px; margin-top: -8px;
+        .dipper-stick {
+            width: 8px;
+            height: 180px;
+            background: #7d4e24;
+            margin: 0 auto;
+            border-radius: 4px;
         }
 
-        /* Section Spacing */
-        .products { padding: 100px 20px; text-align: center; }
+        .dipper-head {
+            width: 45px;
+            height: 55px;
+            background: repeating-linear-gradient(0deg, #a67038, #a67038 8px, #7d4e24 8px, #7d4e24 12px);
+            border-radius: 8px;
+            margin-top: -5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* BEES */
+        .bee-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10; /* Above honey, below notice */
+        }
+
+        .bee {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #ffdb58; /* Yellow body */
+            border-radius: 50%;
+            border: 2px solid #333; /* Black stripes */
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            animation: beeFlight 15s linear infinite; /* Long, smooth flight */
+            z-index: 10;
+        }
+        .bee::before, .bee::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 6px;
+            background: rgba(255,255,255,0.6); /* Transparent wings */
+            border-radius: 50%;
+            top: -4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .bee::before { left: -2px; transform: rotate(-30deg); }
+        .bee::after { right: -2px; transform: rotate(30deg); }
+
+        /* Individual bee animations */
+        .bee:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; animation-duration: 18s; }
+        .bee:nth-child(2) { top: 30%; left: 70%; animation-delay: 3s; animation-duration: 16s; transform: scale(0.9); }
+        .bee:nth-child(3) { top: 25%; left: 40%; animation-delay: 6s; animation-duration: 20s; transform: scale(1.1); }
+        .bee:nth-child(4) { top: 18%; left: 55%; animation-delay: 9s; animation-duration: 17s; transform: scale(0.8); }
+
+        @keyframes beeFlight {
+            0% { transform: translate(0, 0) scale(var(--s, 1)); }
+            25% { transform: translate(50px, -20px) scale(var(--s, 1)); }
+            50% { transform: translate(100px, 30px) scale(var(--s, 1)); }
+            75% { transform: translate(20px, 60px) scale(var(--s, 1)); }
+            100% { transform: translate(0, 0) scale(var(--s, 1)); }
+        }
+
+        /* BRAND TEXT */
+        .brand {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .brand p { color: #000; letter-spacing: 5px; font-weight: 700; margin: 0; font-size: 12px; }
+        .brand h1 { font-family: 'Playfair Display', serif; font-size: 90px; margin: -10px 0; color: #000; line-height: 1; }
+        .brand h2 { letter-spacing: 8px; font-size: 0.9rem; color: #000; margin-top: 10px; font-weight: 400; }
+
+        /* PRODUCTS SECTION */
+        .products { padding: 60px 20px; text-align: center; }
+        .section-label { color: #fff; letter-spacing: 4px; font-size: 12px; margin-bottom: 40px; opacity: 0.8; }
+
         .grid {
             max-width: 1100px;
             margin: auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .card { background: #fff; border-radius: 30px; padding: 50px 30px; color: #333; transition: 0.4s; }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .card {
+            background: #fff;
+            border-radius: 25px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
 
-        /* Dimmed Footer */
+        .card:hover { transform: translateY(-10px); }
+
+        .jar-img {
+            width: 120px;
+            height: 140px;
+            background: #f4b400;
+            margin: 0 auto 20px;
+            border-radius: 10px 10px 30px 30px;
+            position: relative;
+        }
+
+        .card h3 { color: #333; margin: 15px 0 5px; font-size: 1.1rem; }
+        .price { color: #1f7a4a; font-weight: 700; font-size: 1.3rem; margin-bottom: 20px; }
+
+        .btn {
+            background: #25D366;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* DIMMED FOOTER */
         footer {
             padding: 80px 20px;
-            background: rgba(0,0,0,0.5);
             text-align: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 13px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        @media(max-width: 768px) {
-            .brand h1 { font-size: 70px; }
-            .brand h2 { font-size: 0.7rem; letter-spacing: 5px; }
-        }
+        footer strong { color: rgba(255, 255, 255, 0.8); }
+
     </style>
 </head>
 <body class="pattern">
 
     <section class="hero">
-        <div class="notice">WARNING: DRY SPOON ONLY<br>PROTECT THE PURITY</div>
-        
-        <div class="honey-header"></div>
-        
-        <div class="drop" style="left: 20%; animation-delay: 0s;"></div>
-        <div class="drop" style="left: 45%; animation-delay: 2.5s;"></div>
-        <div class="drop" style="left: 75%; animation-delay: 1s;"></div>
+        <div class="notice">NOTICE: KEEP IN COOL PLACE<br>DO NOT USE WET SPOON</div>
 
         <div class="dipper">
             <div class="dipper-stick"></div>
             <div class="dipper-head"></div>
         </div>
 
+        <div class="honey-header"></div>
+
+        <div class="falling-drops">
+            <div class="drop" style="top: 300px;"></div>
+            <div class="drop" style="top: 350px;"></div>
+            <div class="drop" style="top: 320px;"></div>
+            <div class="drop" style="top: 380px;"></div>
+            <div class="drop" style="top: 310px;"></div>
+            <div class="drop" style="top: 360px;"></div>
+        </div>
+
+        <div class="bee-container">
+            <div class="bee"></div>
+            <div class="bee"></div>
+            <div class="bee"></div>
+            <div class="bee"></div>
+        </div>
+
         <div class="brand">
             <p>HIMACHAL KA</p>
             <h1>S&S</h1>
-            <h2>Authentic Raw Honey</h2>
+            <h2>AUTHENTIC RAW HONEY</h2>
         </div>
     </section>
 
     <section class="products">
+        <div class="section-label">PREMIUM COLLECTION</div>
         <div class="grid">
             <div class="card">
-                <div style="width:100px; height:120px; background:var(--honey); border-radius:10px 10px 30px 30px; margin:0 auto 20px; border:4px solid var(--honey-dark);"></div>
-                <h3>Wildflower Honey</h3>
-                <p style="font-size:14px; opacity:0.7;">Directly from the high-altitude meadows.</p>
-                <div style="font-size:24px; font-weight:700; color:#1f7a4a; margin:15px 0;">₹550</div>
-                <a href="#" style="background:#25D366; color:#fff; padding:12px 30px; border-radius:50px; text-decoration:none; font-weight:600; display:inline-block;">Order on WhatsApp</a>
+                <div class="jar-img"></div>
+                <h3>Organic Forest Honey</h3>
+                <div class="price">₹550</div>
+                <a href="#" class="btn">Order on WhatsApp</a>
             </div>
-            
+            <div class="card">
+                <div class="jar-img" style="background: #f7ca4a;"></div>
+                <h3>Mountain Bloom</h3>
+                <div class="price">₹580</div>
+                <a href="#" class="btn">Order on WhatsApp</a>
             </div>
+            <div class="card">
+                <div class="jar-img" style="background: #e69b00;"></div>
+                <h3>Wildflower Comb</h3>
+                <div class="price">₹620</div>
+                <a href="#" class="btn">Order on WhatsApp</a>
+            </div>
+        </div>
     </section>
 
     <footer class="pattern">
-        <p><strong>S&S RAW HONEY CO.</strong></p>
-        <p>Pure · Natural · Unfiltered · Ethically Sourced</p>
-        <p style="margin-top:20px;">© 2025 All Rights Reserved.</p>
+        <p><strong>S&S RAW HONEY</strong></p>
+        <p>Sourced ethically from the Himalayan foothills.</p>
+        <p style="font-size: 11px; margin-top: 20px;">© 2025 Pure · Natural · Unfiltered</p>
     </footer>
 
 </body>
