@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* GEOMETRIC HEX PATTERN - Matches reference image */
+        /* GEOMETRIC HEX PATTERN */
         .pattern {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52"><path d="M15 0l15 8.66v17.34L15 34.66 0 26V8.66L15 0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
             background-size: 30px 52px;
@@ -65,15 +65,53 @@
             
             /* The "Drip" Shape Mask */
             -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,0 H1200 V300 C1100,300 1050,450 950,450 C850,450 800,300 700,300 C600,300 550,450 450,450 C350,450 300,300 200,300 C100,300 50,450 0,450 Z" fill="black"/></svg>');
-            -webkit-mask-size: 200% 100%; /* Wider mask for movement */
+            -webkit-mask-size: 100% 100%; /* Reset mask size for pulsation */
             
-            /* ANIMATION: Makes the honey look like it is flowing/moving */
-            animation: honeyFlow 10s ease-in-out infinite alternate;
+            /* ANIMATION: Makes the honey look like it's subtly pulsating */
+            animation: honeyPulsate 8s ease-in-out infinite alternate;
         }
 
-        @keyframes honeyFlow {
-            0% { -webkit-mask-position: 0% 0%; }
-            100% { -webkit-mask-position: 100% 0%; }
+        @keyframes honeyPulsate {
+            0% { transform: scaleY(1); }
+            50% { transform: scaleY(1.01) translateY(2px); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* FALLING HONEY DROPS */
+        .falling-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 6; /* Below brand, above honey header */
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--honey-dark);
+            border-radius: 50% 50% 50% 0; /* Teardrop shape */
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: fallAndFade 4s ease-in forwards; /* Each drop animates once */
+        }
+
+        /* Random delays for drops */
+        .drop:nth-child(1) { left: 15%; animation-delay: 0.5s; }
+        .drop:nth-child(2) { left: 35%; animation-delay: 1.2s; width: 8px; height: 8px; }
+        .drop:nth-child(3) { left: 55%; animation-delay: 2.0s; }
+        .drop:nth-child(4) { left: 70%; animation-delay: 0.8s; width: 12px; height: 12px; }
+        .drop:nth-child(5) { left: 25%; animation-delay: 2.5s; width: 7px; height: 7px; }
+        .drop:nth-child(6) { left: 85%; animation-delay: 1.5s; }
+
+
+        @keyframes fallAndFade {
+            0% { transform: translateY(300px) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(600px) rotate(-45deg); opacity: 0; }
         }
 
         /* HONEY DIPPER */
@@ -106,6 +144,55 @@
             border-radius: 8px;
             margin-top: -5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* BEES */
+        .bee-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10; /* Above honey, below notice */
+        }
+
+        .bee {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #ffdb58; /* Yellow body */
+            border-radius: 50%;
+            border: 2px solid #333; /* Black stripes */
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            animation: beeFlight 15s linear infinite; /* Long, smooth flight */
+            z-index: 10;
+        }
+        .bee::before, .bee::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 6px;
+            background: rgba(255,255,255,0.6); /* Transparent wings */
+            border-radius: 50%;
+            top: -4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .bee::before { left: -2px; transform: rotate(-30deg); }
+        .bee::after { right: -2px; transform: rotate(30deg); }
+
+        /* Individual bee animations */
+        .bee:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; animation-duration: 18s; }
+        .bee:nth-child(2) { top: 30%; left: 70%; animation-delay: 3s; animation-duration: 16s; transform: scale(0.9); }
+        .bee:nth-child(3) { top: 25%; left: 40%; animation-delay: 6s; animation-duration: 20s; transform: scale(1.1); }
+        .bee:nth-child(4) { top: 18%; left: 55%; animation-delay: 9s; animation-duration: 17s; transform: scale(0.8); }
+
+        @keyframes beeFlight {
+            0% { transform: translate(0, 0) scale(var(--s, 1)); }
+            25% { transform: translate(50px, -20px) scale(var(--s, 1)); }
+            50% { transform: translate(100px, 30px) scale(var(--s, 1)); }
+            75% { transform: translate(20px, 60px) scale(var(--s, 1)); }
+            100% { transform: translate(0, 0) scale(var(--s, 1)); }
         }
 
         /* BRAND TEXT */
@@ -190,6 +277,22 @@
         </div>
 
         <div class="honey-header"></div>
+
+        <div class="falling-drops">
+            <div class="drop" style="top: 300px;"></div>
+            <div class="drop" style="top: 350px;"></div>
+            <div class="drop" style="top: 320px;"></div>
+            <div class="drop" style="top: 380px;"></div>
+            <div class="drop" style="top: 310px;"></div>
+            <div class="drop" style="top: 360px;"></div>
+        </div>
+
+        <div class="bee-container">
+            <div class="bee"></div>
+            <div class="bee"></div>
+            <div class="bee"></div>
+            <div class="bee"></div>
+        </div>
 
         <div class="brand">
             <p>HIMACHAL KA</p>
